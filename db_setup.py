@@ -15,6 +15,10 @@ start_db_session()
     the database
 '''
 
+# ----------------------------------------
+# Imports
+# ----------------------------------------
+
 # Standard library imports
 import os
 # Related third party imports
@@ -30,8 +34,16 @@ from sqlalchemy.ext.declarative import (
 
 # Import from other modules
 
+# ----------------------------------------
+# Classes
+# ----------------------------------------
+
 # BaseClass
 BaseClass = sqla_declarative_base()
+
+# ----------------------------------------
+# Functions
+# ----------------------------------------
 
 # start_database()
 def start_db(log=False):
