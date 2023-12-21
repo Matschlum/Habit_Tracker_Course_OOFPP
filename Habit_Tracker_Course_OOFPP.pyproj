@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>0b16e071-3849-41cb-853b-2726f0bf36e4</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Habit_Tracker_Course_OOFPP.py</StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,11 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="db_functions.py" />
+    <Compile Include="db_object_functions.py" />
     <Compile Include="db_setup.py" />
+    <Compile Include="db_standard_entries.py" />
+    <Compile Include="habit_classes.py" />
     <Compile Include="Habit_Tracker_Course_OOFPP.py" />
     <Compile Include="main.py" />
   </ItemGroup>
