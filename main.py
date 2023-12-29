@@ -37,6 +37,9 @@ from db_functions import (
 from habit_classes import (
     Habit
 )
+from main_window import (
+    MainWindow
+)
 
 # ----------------------------------------
 # Main
@@ -45,7 +48,7 @@ from habit_classes import (
 if __name__ == "__main__":
     # DB setup
     engine = start_db(log=False)
-    session = start_db_session(engine)
+    session = start_db_session(engine=engine)
 
     # Standard Habits
     status_add_standard_habits = add_standard_habits_to_db(
@@ -55,6 +58,12 @@ if __name__ == "__main__":
         standard_habit_period,
         standard_habit_active_status
     )
+
+    app = MainWindow(session=session)
+    # activate this later !!!! add the function later to the import section
+    #app.main_root.after(0, lambda: loop_for_update_due_date(session=session, root=app.main_root))
+    app.main_root.mainloop()
+
 
     # ----------------------------------------
     # CHECK and TEST SECTION

@@ -38,11 +38,30 @@ def manage_passiv_habits(session, habit_object):
     tbd
         
     '''
-    reset_start_date(session, habit_object)
-    reset_next_due(session, habit_object)
-    reset_total_fails(session, habit_object)
-    reset_current_streak(session, habit_object)
-    reset_tracking_status(session, habit_object)
+    reset_start_date(session=session, habit_object=habit_object)
+    reset_next_due(session=session, habit_object=habit_object)
+    reset_total_fails(session=session, habit_object=habit_object)
+    reset_current_streak(session=session, habit_object=habit_object)
+    reset_tracking_status(session=session, habit_object=habit_object)
+
+
+# manage_tracking_status
+def manage_tracking_status(session, names):
+    function_status_message = [] 
+    habit_entries = filter_db_for_names(session=session, names=names)
+    for habit_entry in habit_entries:
+        if (habit_entry.habit_active_status is True
+            and habit_entry.habit_tracking_status is False
+        ):
+            habit_entry.habit_tracking_status = True
+            streak_calculator(session, habit_entry)
+            # JUST FOR RE-ADJUSTING ENTRIES!!!!
+            #habit_entry.habit_tracking_status = False
+            session.commit()
+            return None
+        elif habit_entry.habit_active_status is False:
+            function_status_message.append(200)
+            return function_status_message
 
 # ----------------------------------------
 # Third level functions
