@@ -1,15 +1,20 @@
-''' Starts the habit tracker application
+''' Starts the application.
 
------
+----------------------------------------
 Description
 
-tbd
+This module starts the application, if it is started as the main file
+It sets up the database and creates a session, so that it is possible to
+interact with the database (e.g. change values).
+The program will ask if the standard entries should be added to the database
+using a simple input line.
+Afterwards the MainWindow instance will be created.
 
------
-Note
-For developing purposes there is a section below the main window,
-called CHECK. This is used during the developing to test and show
-data in the command line. It has no other influence to the module.
+----------------------------------------
+Note:
+For test purposes there is another region implemented to test the status of the
+database during the development process.
+
 '''
 
 # ----------------------------------------
@@ -21,26 +26,26 @@ data in the command line. It has no other influence to the module.
 # Related third party imports
 
 # Import from other modules
-from db_setup import(
+from db_setup import (
     start_db,
     start_db_session
 )
-from db_standard_entries import(
+from db_standard_entries import (
     standard_habit_name,
     standard_habit_active_status,
     standard_habit_description,
     standard_habit_period
 )
-from db_functions import(
+from db_functions import (
     add_standard_habits_to_db
 )
-from habit_classes import(
+from habit_classes import (
     Habit
 )
-from main_window import(
+from main_window import (
     MainWindow
 )
-from update_loop import(
+from update_loop import (
     loop_for_update_due_date
 )
 
@@ -49,28 +54,39 @@ from update_loop import(
 # ----------------------------------------
 
 if __name__ == "__main__":
-    # DB setup
+    # Sets up the dababase and creates a session to it.
     engine = start_db(log=False)
     session = start_db_session(engine=engine)
 
-    # Standard Habits
-    status_add_standard_habits = add_standard_habits_to_db(
-        session,
-        standard_habit_name,
-        standard_habit_description,
-        standard_habit_period,
-        standard_habit_active_status
+    command_to_add_standard_values = input(
+        "If you want to add the standard values type: yes\n"
     )
+    if command_to_add_standard_values == "yes":
+        status_add_standard_habits = add_standard_habits_to_db(
+            session,
+            standard_habit_name,
+            standard_habit_description,
+            standard_habit_period,
+            standard_habit_active_status
+        )
 
+    # Creating an instance of the MainWindow (GUI)
+    # to interact with the application.
     app = MainWindow(session=session)
-    app.main_root.after(0, lambda: loop_for_update_due_date(session=session, root=app.main_root))
+    app.main_root.after(
+        0,
+        lambda: loop_for_update_due_date(
+            session=session,
+            root=app.main_root
+        )
+    )
     app.main_root.mainloop()
-
 
     # ----------------------------------------
     # CHECK and TEST SECTION
     # ----------------------------------------
-
+    # region
+    # Check to see all entries in the database
     all_habits = session.query(Habit).all()
 
     for habit in all_habits:
@@ -86,3 +102,4 @@ if __name__ == "__main__":
         print("Total Fails:", habit.habit_total_fails)
         print("Next Due:", habit.habit_next_due)
         print("-------------------------")
+    # endregion

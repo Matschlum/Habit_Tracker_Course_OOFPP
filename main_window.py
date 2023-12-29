@@ -398,13 +398,15 @@ class MainWindow():
     # click_change_habit
     def click_change_habit(self):
         selected_names = self.catch_selected_entries()
-        print("missing function for change habit")
+        if selected_names:
+            print("missing function for change habit")
 
     # click_delete_habit(self)
     def click_delete_habit(self):
         selected_names = self.catch_selected_entries()
-        delete_entries_from_db(session=self.session, habit_names=selected_names)
-        self.update_data_in_table()
+        if selected_names:
+            delete_entries_from_db(session=self.session, habit_names=selected_names)
+            self.update_data_in_table()
 
     # load_data_to_table(self)
     def load_data_to_table(self):
