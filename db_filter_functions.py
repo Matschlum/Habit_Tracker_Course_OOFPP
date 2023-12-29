@@ -15,6 +15,7 @@ from habit_classes import(
     Habit
 )
 
+# filter_db
 def filter_db(session, period_filter: int = None, active_filter: int =0):
     ''' Function to filter the db
     
@@ -37,9 +38,6 @@ def filter_db(session, period_filter: int = None, active_filter: int =0):
         It returns the db entries that then can be displayed.
 
     '''
-
-    # Check the parameters for the correct value
-    # and load the data from the db accordingly.
 
     if (period_filter == 1 or period_filter == 2 or period_filter == 7) and active_filter == 0:
         table_content = (session.query(Habit)
@@ -65,3 +63,13 @@ def filter_db(session, period_filter: int = None, active_filter: int =0):
         table_content = (session.query(Habit).all())
 
     return table_content
+
+# filter_db_for_names
+def filter_db_for_names(session, names):
+    ''' 
+
+    tbd
+
+    '''
+    entries = session.query(Habit).filter(Habit.habit_name.in_(names)).all()
+    return entries

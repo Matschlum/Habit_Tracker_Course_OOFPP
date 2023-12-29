@@ -17,7 +17,8 @@ from tkinter import ttk
 
 # Import from other modules
 from db_object_functions import (
-    manage_active_passiv_status
+    manage_active_passiv_status,
+    manage_tracking_status
 )
 from db_filter_functions import(
     filter_db
@@ -286,7 +287,7 @@ class MainWindow():
         tbd
 
         '''
-        #CreateNewHabitWindow(main_window=self, session=self.session)
+        CreateNewHabitWindow(main_window=self, session=self.session)
   
     # click_close_application(self)
     def click_close_application(self):
@@ -304,7 +305,7 @@ class MainWindow():
         tbd
 
         '''
-        #ShowHighscoreWindow(self.session)
+        ShowHighscoreWindow(self.session)
 
     # click_show_history(self)
     def click_show_history(self):
@@ -313,7 +314,7 @@ class MainWindow():
         tbd
 
         '''
-        #ShowHabitHistory(session=self.session)
+        ShowHabitHistory(session=self.session)
 
     # click_filter_active(self)
     def click_filter_active(self):
@@ -352,9 +353,12 @@ class MainWindow():
 
     # click_change_active_passive(self)
     def click_change_active_passive(self):
+        '''
+
+        tbd
+
+        '''
         selected_names = self.catch_selected_entries()
-        # Check if the catch_selected_entry returned something
-        # If a selection has been detected, then call the change status function.
         if selected_names:
             manage_active_passiv_status(
                 session=self.session,
@@ -364,9 +368,14 @@ class MainWindow():
 
     # click_change_tracking_status(self)
     def click_change_tracking_status(self):
+        '''
+
+        tbd
+
+        '''
         selected_names = self.catch_selected_entryies()
         if selected_names:
-            func_messages = change_tracking_status(
+            func_messages = manage_tracking_status(
                 session=self.session,
                 names=selected_names
             )

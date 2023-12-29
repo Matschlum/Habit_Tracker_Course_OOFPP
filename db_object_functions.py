@@ -14,6 +14,9 @@ import datetime
 # Related third party imports
 
 # Import from other modules
+from db_filter_functions import(
+    filter_db_for_names
+)
 
 # ----------------------------------------
 # Second level functions
@@ -53,7 +56,7 @@ def manage_tracking_status(session, names):
         if (habit_entry.habit_active_status is True
             and habit_entry.habit_tracking_status is False
         ):
-            habit_entry.habit_tracking_status = True
+            set_tracking_status_to_true(session=session, habit_object=habit_entry)
             streak_calculator(session, habit_entry)
             # JUST FOR RE-ADJUSTING ENTRIES!!!!
             #habit_entry.habit_tracking_status = False
@@ -103,4 +106,15 @@ def reset_next_due(session, habit_object):
 # reset_total_fails
 def reset_total_fails(session, habit_object):
     habit_object.habit_total_fails = 0
+    session.commit()
+
+def set_tracking_status_to_true(session, habit_object):
+    habit_object.habit_tracking_status = True
+    session.commit()
+
+# streak_calculator
+def streak_calculator(session, habit_object):
+    habit_object.habit_current_streak = habit_object.habit_current_streak + 1
+    if habit_object.habit_current_streak > habit_object.habit_highscore_streak:
+        habit_object.habit_highscore_streak = habit_object.habit_current_streak
     session.commit()
