@@ -73,3 +73,13 @@ def filter_db_for_names(session, names):
     '''
     entries = session.query(Habit).filter(Habit.habit_name.in_(names)).all()
     return entries
+
+# search_for_highscore_in_db
+def search_for_highscore_in_db(session):
+    highscore_value = session.query(Habit.habit_highscore_streak).order_by(Habit.habit_highscore_streak.desc()).first()[0]
+    return highscore_value
+
+# filter_for_highscore_objects_in_db
+def filter_for_highscore_objects_in_db(session, highscore_value):
+    entries = session.query(Habit).filter(Habit.habit_highscore_streak == highscore_value).all()
+    return entries

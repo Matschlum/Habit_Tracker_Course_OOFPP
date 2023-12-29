@@ -180,17 +180,17 @@ class MainWindow():
         # ----------------------------------------
         #region
         column_lst = [
-                "habit_name",
-                "habit_active_status",
-                "habit_tracking_status",
-                "habit_next_due",
-                "habit_current_streak",
-                "habit_highscore_streak",
-                "habit_period",
-                "habit_total_fails",
-                "habit_start_date",
-                "habit_description"
-            ]
+            "habit_name",
+            "habit_active_status",
+            "habit_tracking_status",
+            "habit_next_due",
+            "habit_current_streak",
+            "habit_highscore_streak",
+            "habit_period",
+            "habit_total_fails",
+            "habit_start_date",
+            "habit_description"
+        ]
         self.habit_table = ttk.Treeview(
             self.subframe_table,
             column=column_lst,
@@ -289,7 +289,7 @@ class MainWindow():
         #endregion
 
     # ----------------------------------------
-    # Methods for the class, giving the the buttons functionality.
+    # Methods
     # ----------------------------------------
     #region
     # click_close_application(self)
