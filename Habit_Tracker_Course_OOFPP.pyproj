@@ -21,6 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="create_new_habit_window.py" />
     <Compile Include="db_filter_functions.py" />
     <Compile Include="db_functions.py" />
     <Compile Include="db_object_functions.py" />
@@ -30,6 +31,9 @@
     <Compile Include="Habit_Tracker_Course_OOFPP.py" />
     <Compile Include="main.py" />
     <Compile Include="main_window.py" />
+    <Compile Include="habit_history_window.py" />
+    <Compile Include="pop_up_windows.py" />
+    <Compile Include="update_loop.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

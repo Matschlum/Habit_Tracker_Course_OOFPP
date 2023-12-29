@@ -17,11 +17,21 @@ from tkinter import ttk
 
 # Import from other modules
 from db_object_functions import (
-    manage_active_passiv_status,
+    change_active_passiv_status,
     manage_tracking_status
 )
 from db_filter_functions import(
     filter_db
+)
+from pop_up_windows import(
+    ShowHighscoreWindow,
+    InputMessageWindow
+)
+from create_new_habit_window import(
+    CreateNewHabitWindow
+)
+from habit_history_window import(
+    ShowHabitHistory
 )
 
 # Class MainWindow
@@ -360,7 +370,7 @@ class MainWindow():
         '''
         selected_names = self.catch_selected_entries()
         if selected_names:
-            manage_active_passiv_status(
+            change_active_passiv_status(
                 session=self.session,
                 names=selected_names
             )
@@ -373,22 +383,24 @@ class MainWindow():
         tbd
 
         '''
-        selected_names = self.catch_selected_entryies()
+        selected_names = self.catch_selected_entries()
         if selected_names:
-            func_messages = manage_tracking_status(
+            function_status_messages = manage_tracking_status(
                 session=self.session,
                 names=selected_names
             )
-            InputMessageWindow(func_messages)
+            InputMessageWindow(function_status_messages)
             self.update_data_in_table()
 
     # click_change_habit
     def click_change_habit(self):
-        selected_names = self.catch_selected_entry()
+        selected_names = self.catch_selected_entries()
+        print("missing function for change habit")
 
     # click_delete_habit(self)
     def click_delete_habit(self):
-        selected_names = self.catch_selected_entry()
+        selected_names = self.catch_selected_entries()
+        print("missing function for delete habit")
 
     # load_data_to_table(self)
     def load_data_to_table(self):

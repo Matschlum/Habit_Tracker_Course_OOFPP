@@ -22,6 +22,22 @@ from db_filter_functions import(
 # Second level functions
 # ----------------------------------------
 
+# change_active_passiv_status
+def change_active_passiv_status(session, names):
+    ''' 
+
+    tbd
+
+    '''
+
+    habit_entries = filter_db_for_names(session=session, names=names)
+
+    for habit_entry in habit_entries:
+        habit_entry.habit_active_status = not habit_entry.habit_active_status
+        # Set start date if active
+        manage_active_passiv_status(session=session, habit_object=habit_entry)
+    session.commit()
+
 # manage_active_passiv_status()
 def manage_active_passiv_status(session, habit_object):
     '''
@@ -61,10 +77,12 @@ def manage_tracking_status(session, names):
             # JUST FOR RE-ADJUSTING ENTRIES!!!!
             #habit_entry.habit_tracking_status = False
             session.commit()
-            return None
         elif habit_entry.habit_active_status is False:
             function_status_message.append(200)
-            return function_status_message
+    if function_status_message != []:
+        return function_status_message
+    else:
+        return None
 
 # ----------------------------------------
 # Third level functions
