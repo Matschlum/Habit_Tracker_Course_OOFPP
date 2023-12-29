@@ -21,24 +21,27 @@ data in the command line. It has no other influence to the module.
 # Related third party imports
 
 # Import from other modules
-from db_setup import (
+from db_setup import(
     start_db,
     start_db_session
 )
-from db_standard_entries import (
+from db_standard_entries import(
     standard_habit_name,
     standard_habit_active_status,
     standard_habit_description,
     standard_habit_period
 )
-from db_functions import (
+from db_functions import(
     add_standard_habits_to_db
 )
-from habit_classes import (
+from habit_classes import(
     Habit
 )
-from main_window import (
+from main_window import(
     MainWindow
+)
+from update_loop import(
+    loop_for_update_due_date
 )
 
 # ----------------------------------------
@@ -60,8 +63,7 @@ if __name__ == "__main__":
     )
 
     app = MainWindow(session=session)
-    # activate this later !!!! add the function later to the import section
-    #app.main_root.after(0, lambda: loop_for_update_due_date(session=session, root=app.main_root))
+    app.main_root.after(0, lambda: loop_for_update_due_date(session=session, root=app.main_root))
     app.main_root.mainloop()
 
 

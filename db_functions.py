@@ -21,11 +21,14 @@ tbd
 # Related third party imports
 
 # Import from other modules
-from habit_classes import (
+from habit_classes import(
     Habit
 )
-from db_object_functions import (
+from db_object_functions import(
     manage_active_passiv_status
+)
+from db_filter_functions import(
+    filter_db_for_names
 )
 
 # ----------------------------------------
@@ -134,3 +137,11 @@ def add_new_entry_to_db(
     else:
         function_status_message.append(1)
     return function_status_message
+
+
+# delete_entries_from_db
+def delete_entries_from_db(session, habit_names):
+    habit_entries = filter_db_for_names(session=session, names=habit_names)
+    for entry in habit_entries:
+        session.delete(entry)
+    session.commit()

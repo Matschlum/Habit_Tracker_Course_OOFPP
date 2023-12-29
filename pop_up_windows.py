@@ -13,45 +13,28 @@ import tkinter as tk
 
 # Class ShowHighscoreWindow
 class ShowHighscoreWindow():
-    ''' Pop up to show the current highscore
+    ''' 
 
-    -----
-    Description
-    This class opens up a new window to show the
-    highest streak with all related habit information.
-    This window is for information only. There is no
-    user interaction.
+    tbd
 
-    -----
-    Arguments
-    session
-        to handle the db session
-    highscore_root
-        as the window itself
-    highscore_frame
-        as the frame of the window to organize the widgets
     '''
 
     # Constructor
     def __init__(self, session):
 
-        ''' Constructor of the ShowHighscoreWindow class
+        ''' 
 
-        -----
-        Parameters
-        session
-            to handle the db session
+        tbd
+
         '''
-        # Create the window and define its properties.
+
         self.highscore_root = tk.Tk()
         self.highscore_root.geometry("400x400")
         self.highscore_root.title("Highscore Streak - Habit Tracker")
 
-        # Setting up the frame for the window
         self.highscore_frame = tk.Frame(self.highscore_root)
         self.highscore_frame.grid(sticky="nsew")
 
-        # used to connect to the database
         self.session = session
 
 
@@ -100,8 +83,11 @@ class InputMessageWindow():
             )
             self.ok_button.pack(padx=10, pady=10)
     
-    # Class Methods
     # click_ok
     def click_ok(self):
-        ''' closes the window '''
+        ''' 
+       
+        tbd
+
+        '''
         self.input_message_root.destroy()

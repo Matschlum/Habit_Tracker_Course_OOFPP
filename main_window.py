@@ -33,6 +33,9 @@ from create_new_habit_window import(
 from habit_history_window import(
     ShowHabitHistory
 )
+from db_functions import(
+    delete_entries_from_db
+)
 
 # Class MainWindow
 class MainWindow():
@@ -400,7 +403,8 @@ class MainWindow():
     # click_delete_habit(self)
     def click_delete_habit(self):
         selected_names = self.catch_selected_entries()
-        print("missing function for delete habit")
+        delete_entries_from_db(session=self.session, habit_names=selected_names)
+        self.update_data_in_table()
 
     # load_data_to_table(self)
     def load_data_to_table(self):
