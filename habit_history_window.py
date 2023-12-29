@@ -61,6 +61,9 @@ class ShowHabitHistory():
         self.habit_history_frame.grid_columnconfigure(0, weight=1)
         self.habit_history_frame.grid_columnconfigure(1, weight=1)
         self.habit_history_frame.grid_columnconfigure(2, weight=1)
+        self.subframe_filter_buttons.grid_columnconfigure(0, weight=1)
+        self.subframe_history_table.grid_columnconfigure(0, weight=1)
+        self.subframe_interaction_buttons.grid_columnconfigure(0, weight=1)
 
         self.session = session
         # endregion
