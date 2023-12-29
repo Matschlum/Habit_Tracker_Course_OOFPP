@@ -1,15 +1,15 @@
 # Error Codes
-## add_new_entry_to_db
-0:     habit successfully added to the database
-### WARNINING:
-100:   name is not of type str, it will converted into a str
-101:   description os not of type str, it will converted into a str
-
+## add_new_entry_to_db  
+0:     habit successfully added to the database  
+### WARNINING:  
+100:   name is not of type str, it will converted into a str  
+101:   description os not of type str, it will converted into a str  
+  
 ### ERROR:
-1:     habit with this name is already existing
-112:   active_status is not of type boolean
-113:   period is not of type int
-114:   name is None or ""
+1:     habit with this name is already existing  
+112:   active_status is not of type boolean  
+113:   period is not of type int  
+114:   name is None or ""  
 
 
 ## add_standard_habits_to_db
