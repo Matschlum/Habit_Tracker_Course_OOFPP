@@ -1,4 +1,5 @@
-''' This module contains the MainWindow Class
+'''
+This module contains the MainWindow Class
 
 -----
 Description
@@ -53,8 +54,8 @@ class MainWindow():
         '''
         # ----------------------------------------
         # Creating the main setup for the window.
-        # ----------------------------------------
-        #region
+        # region ----------------------------------------
+
         # Define the main_root and the frames for the MainWinodw.
         self.main_root = tk.Tk()
         self.main_root.geometry("950x400")
@@ -99,8 +100,7 @@ class MainWindow():
 
         # ----------------------------------------
         # Creating all widgets for the subframe_top_buttons
-        # ----------------------------------------
-        #region
+        # region ----------------------------------------
 
         self.create_new_habit_button = tk.Button(
             self.subframe_top_buttons,
@@ -151,8 +151,7 @@ class MainWindow():
 
         # ----------------------------------------
         # Creating all widgets for the subframe_lower_buttons.
-        # ----------------------------------------
-        #region
+        # region ----------------------------------------
         self.change_active_button = tk.Button(
             self.subframe_low_buttons,
             text="Change Active/Passiv",
@@ -177,8 +176,7 @@ class MainWindow():
 
         # ----------------------------------------
         # Creating the table to show the habits to the user.
-        # ----------------------------------------
-        #region
+        # region ----------------------------------------
         column_lst = [
             "habit_name",
             "habit_active_status",
@@ -209,8 +207,8 @@ class MainWindow():
 
         # ----------------------------------------
         # Place the widgets into the frames.
-        # ----------------------------------------
-        #region
+        # region ----------------------------------------
+
         # Placing the widgets for the first row.
         self.create_new_habit_button.grid(
             row=0, column=0,
@@ -290,10 +288,9 @@ class MainWindow():
 
     # ----------------------------------------
     # Methods
-    # ----------------------------------------
-    #region
-    # click_close_application(self)
-    # click_create_new_habit(self)
+    # region ----------------------------------------
+
+    # click_create_new_habit
     def click_create_new_habit(self):
         '''
 
@@ -302,7 +299,7 @@ class MainWindow():
         '''
         CreateNewHabitWindow(main_window=self, session=self.session)
   
-    # click_close_application(self)
+    # click_close_application
     def click_close_application(self):
         ''' 
        
@@ -311,7 +308,7 @@ class MainWindow():
         '''
         self.main_root.destroy()
 
-    # click_show_highscore(self)
+    # click_show_highscore
     def click_show_highscore(self):
         ''' 
 
@@ -320,7 +317,7 @@ class MainWindow():
         '''
         ShowHighscoreWindow(self.session)
 
-    # click_show_history(self)
+    # click_show_history
     def click_show_history(self):
         ''' 
 
@@ -329,7 +326,7 @@ class MainWindow():
         '''
         ShowHabitHistory(session=self.session)
 
-    # click_filter_active(self)
+    # click_filter_active
     def click_filter_active(self):
         ''' 
 
@@ -343,7 +340,7 @@ class MainWindow():
             self.habit_active_filter += 1
         self.update_data_in_table()
 
-    # click_show_period(self, period: int)
+    # click_show_period
     def click_show_period(self, period: int):
         ''' 
 
@@ -353,7 +350,7 @@ class MainWindow():
         self.habit_period_filter = period
         self.update_data_in_table()
 
-    # click_reset_filter(self)
+    # click_reset_filter
     def click_reset_filter(self):
         ''' 
 
@@ -364,7 +361,7 @@ class MainWindow():
         self.habit_active_filter = 0
         self.update_data_in_table()
 
-    # click_change_active_passive(self)
+    # click_change_active_passive
     def click_change_active_passive(self):
         '''
 
@@ -379,7 +376,7 @@ class MainWindow():
             )
             self.update_data_in_table()
 
-    # click_change_tracking_status(self)
+    # click_change_tracking_status
     def click_change_tracking_status(self):
         '''
 
@@ -401,14 +398,14 @@ class MainWindow():
         if selected_names:
             print("missing function for change habit")
 
-    # click_delete_habit(self)
+    # click_delete_habit
     def click_delete_habit(self):
         selected_names = self.catch_selected_entries()
         if selected_names:
             delete_entries_from_db(session=self.session, habit_names=selected_names)
             self.update_data_in_table()
 
-    # load_data_to_table(self)
+    # load_data_to_table
     def load_data_to_table(self):
         ''' 
         
@@ -442,7 +439,7 @@ class MainWindow():
                 )
             )
 
-    # update_data_in_table(self)
+    # update_data_in_table
     def update_data_in_table(self):
         ''' 
 
@@ -455,7 +452,7 @@ class MainWindow():
         # Call the load_data_to_table function
         self.load_data_to_table()
 
-    # catch_selected_entry(self):
+    # catch_selected_entry
     def catch_selected_entries(self):
         '''
 

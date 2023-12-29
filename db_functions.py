@@ -23,12 +23,11 @@ add_new_entry_to_db
 delete_entries_from_db
     This function receives a list of habit names and deletes the corresponding
     objects from the database.
-
 '''
 
 # ----------------------------------------
 # Imports
-# ----------------------------------------
+# region ----------------------------------------
 
 # Standard library imports
 
@@ -44,13 +43,14 @@ from db_object_functions import (
 from db_filter_functions import (
     filter_db_for_names
 )
+# endregion
 
 # ----------------------------------------
 # Functions
-# ----------------------------------------
+# region ----------------------------------------
 
 
-# add_standard_habits_to_db()
+# add_standard_habits_to_db
 def add_standard_habits_to_db(
     session,
     standard_name,
@@ -133,7 +133,7 @@ def add_standard_habits_to_db(
     return function_status_message_adding_entries
 
 
-# add_new_entry_to_db()
+# add_new_entry_to_db
 def add_new_entry_to_db(
     session,
     name: str,
@@ -239,3 +239,4 @@ def delete_entries_from_db(session, habit_names):
     for entry in habit_entries:
         session.delete(entry)
     session.commit()
+# endregion

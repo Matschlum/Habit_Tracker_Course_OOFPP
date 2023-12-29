@@ -6,6 +6,7 @@ tbd
 
 # Standard library imports
 import tkinter as tk
+from tkinter import ttk
 
 # Related third party imports
 
@@ -13,72 +14,113 @@ import tkinter as tk
 
 # Class ShowHabitHistory
 class ShowHabitHistory():
-    ''' Creates the Habit History Window
+    '''
 
-    -----
-    Description
-    This class creates the window to show the habit history
-ed)
-    -----
-    Arguments
-    session
-        to handle the db session
+    tbd
 
-    -----
-    Methods
-    click_close_window
-        closes the window
     '''
     
     # Constructor
     def __init__(self, session):
-        ''' Constructor of the ShowHabitHistory class
+        ''' 
 
-        -----
-        Parameters
-        session
-            session used to load the data from the db
+        tbd
+
         '''
-        # Create the window and define its properties.
+        # ----------------------------------------
+        # Creating the main setup for the window.
+        # region ----------------------------------------
+
         self.habit_history_root = tk.Tk()
         self.habit_history_root.geometry("950x400")
         self.habit_history_root.title("Habit History - Habit Tracker")
-        # Expand the column within the window
-        # Meaning: The frame will stay within the borders of the window
         self.habit_history_root.grid_columnconfigure(0, weight=1)
-        #self.main_root.grid_rowconfigure(0, weight=1)
-        # Connect to the database
-        self.session = session
 
-        # Define the layout of the main window
         self.habit_history_frame = tk.Frame(self.habit_history_root)
-        # Let the buttons stay on the top left side
-        self.habit_history_frame.grid(sticky = "nw")
-        # Define that the first two rows of the frame shoudl stay within the
-        # frame, leading to them staying in the window
+        self.habit_history_frame.grid(sticky = "nsew")
+        
+        self.subframe_filter_buttons = tk.Frame(self.habit_history_frame)
+        self.subframe_filter_buttons.grid(
+            row=0, column=0,
+            padx=10, pady=10,
+            sticky="nw"
+        )
+        self.subframe_history_table = tk.Frame(self.habit_history_frame)
+        self.subframe_history_table.grid(
+            row=1, column=0,
+            padx=10, pady=10,
+            sticky="nsew"
+        )
+        self.subframe_interaction_buttons = tk.Frame(self.habit_history_frame)
+        self.subframe_interaction_buttons.grid(
+            row=2, column=0,
+            padx=10, pady=10,
+            sticky="nw"
+        )
+
         self.habit_history_frame.grid_columnconfigure(0, weight=1)
         self.habit_history_frame.grid_columnconfigure(1, weight=1)
-        #self.all_habits_frame.grid_rowconfigure(0, weight=1)
+        self.habit_history_frame.grid_columnconfigure(2, weight=1)
 
-        # SECTION WIDGET CREATION
-        # Creating all the buttons on the Habit History Window
+        self.session = session
+        # endregion
+
+        # ----------------------------------------
+        # Creating the table to show the habits to the user.
+        # region ----------------------------------------
+
+        column_lst = [
+            "habit_name",
+            "fail_or_complete_date_and_time",
+            "corresponding_due_date",
+            "type_of_completion"
+        ]
+        self.history_table = ttk.Treeview(
+            self.subframe_history_table,
+            column=column_lst,
+            show="headings"
+        )
+        for entry in column_lst:
+            formated_heading = " ".join(entry.split("_")).capitalize()
+            self.history_table.heading(
+                entry,
+                text=formated_heading,
+                anchor=tk.W
+            )
+            self.history_table.column(entry, minwidth=50)
+        # endregion
+
+
+        # ----------------------------------------
+        # Creating the widgets for the subframe_interactive_buttons
+        # region ----------------------------------------
         self.close_window_button = tk.Button(
-            self.habit_history_frame,
-            text="Close",
+            self.subframe_interaction_buttons,
+            text="Close Window",
             command=self.click_close_window
         )
+        # endregion
+
+        # ----------------------------------------
+        # Place the widgets into the frames.
+        # region ----------------------------------------
+
+        self.history_table.grid(
+            row=0, column=0, columnspan=4,
+            padx=10, pady=10,
+            sticky="nsew"
+        )
+
         self.close_window_button.grid(
-            row=0, column=2,
+            row=0, column=0,
             padx=10, pady=10,
             sticky="w"
         )
+        # endregion
 
     # Class Methods
-    # click_create_new_habit
-    def click_create_new_habit(self):
-        pass
-
     # click_close_window
     def click_close_window(self):
-        ''' closes the window '''
+        '''
+        '''
         self.habit_history_root.destroy()

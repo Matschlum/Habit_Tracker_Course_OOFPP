@@ -20,7 +20,7 @@ database during the development process.
 
 # ----------------------------------------
 # Imports
-# ----------------------------------------
+# region ----------------------------------------
 
 # Standard library imports
 
@@ -49,10 +49,11 @@ from main_window import (
 from update_loop import (
     loop_for_update_due_date
 )
+# endregion
 
 # ----------------------------------------
 # Main
-# ----------------------------------------
+# region ----------------------------------------
 
 if __name__ == "__main__":
     # Sets up the dababase and creates a session to it.
@@ -85,9 +86,8 @@ if __name__ == "__main__":
 
     # ----------------------------------------
     # CHECK and TEST SECTION
-    # ----------------------------------------
+    # region ----------------------------------------
 
-    # region
     # Check to see all entries in the database.
     all_habits = session.query(Habit).all()
 
@@ -105,3 +105,4 @@ if __name__ == "__main__":
         print("Next Due:", habit.habit_next_due)
         print("-------------------------")
     # endregion
+# endregion
