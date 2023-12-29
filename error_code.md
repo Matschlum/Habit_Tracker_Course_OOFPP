@@ -1,9 +1,9 @@
 # Error Codes
 ## add_new_entry_to_db  
-0:     habit successfully added to the database
+0:     habit successfully added to the database  
 ### WARNINING:  
-100:   name is not of type str, it will converted into a str
-101:   description os not of type str, it will converted into a str
+100:   name is not of type str, it will converted into a str  
+101:   description os not of type str, it will converted into a str  
   
 ### ERROR:
 1:     habit with this name is already existing  
@@ -15,8 +15,8 @@
 ### ERROR:
 120:   not all values in standard_period are of type integers  
 121:   not all values in standard_active_status are of type boolean  
-122:   not all lists (standard_name, standard_period, standard_active_status and standard_description) have the same length
+122:   not all lists (standard_name, standard_period, standard_active_status and standard_description) have the same length  
 
 ## manage_tracking_status
 ### ERROR:
-200:   habit_tracking_status cannot be changed - habit marked as inactive
+200:   habit_tracking_status cannot be changed - habit marked as inactive  
