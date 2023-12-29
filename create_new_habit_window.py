@@ -13,51 +13,18 @@ from pop_up_windows import InputMessageWindow
 
 # Class CreateNewHabitWindow
 class CreateNewHabitWindow():
-    ''' Creates the Create New Habit Window
+    ''' 
+    
+    tbd
 
-    -----
-    Description
-    This class creates the window incl. all entry
-    fields for creating new habits.
-    It is possible to save the information by
-    calling the add_new_habit_to_db function.
-    It consists of labels for description, entry-fields,
-    a checkbox, a dropdown menu and buttons.
-
-    -----
-    Arguments
-    session
-        handed over, to connect with the db session
-    main_window
-        to communicate with the MainWindow
-    period_selection_lst
-        to make the user the three periods available
-        (Daily, Every Other Day, Weekly)
-    -----
-    Methods
-    click_apply
-        Calls a function to add the new habit to db
-        and updates the table in the mainwindow
-    click_close
-        Closes the window, without adding any
-        data to the database
-    click_apply_and_close
-        Calls the apply and the close method
-        to first save the data to the db and then
-        close the window
-    convert_period_to_integer
-        Convertes the text information from the
-        input field to a corresponding integer number
     '''
 
     # Constructor
     def __init__(self, main_window, session):
-        ''' Constructor of the class
+        ''' 
 
-        -----
-        Parameter
-        session
-            to connect with the db session
+        tbd
+
         '''
         # Create the window and define its properties.
         self.new_habit_root = tk.Tk()
@@ -271,19 +238,10 @@ class CreateNewHabitWindow():
     # Methods
     # click_apply(self)
     def click_apply(self):
-        ''' Function to pass input values
+        ''' 
 
-        -----
-        Description
-        This function sends the data to add_new_entry_to_db
-        function and stores its reply in the message.
+        tbd
 
-        -----
-        Parameter
-        message
-            to receive the return value from the add_new_entry_to_db
-            function and to hand these message codes to
-            the InputMessageWindoW
         '''
         message = add_new_entry_to_db(
             session=self.session,
@@ -299,44 +257,29 @@ class CreateNewHabitWindow():
 
     # click_apply_and_close(self)
     def click_apply_and_close(self):
-        ''' Saves the data and closes the window
+        ''' 
 
-        -----
-        Description
-        Calls the apply function and then the close
-        function
+        tbd
+
         '''
         self.click_apply()
         self.click_close()
 
     # click_close(self)
     def click_close(self):
-        ''' Closes the Create New Habit Window '''
+        ''' 
+       
+        tbd
+
+        '''
         self.new_habit_root.destroy()
 
     # convert_period_to_integer(self)
     def convert_period_to_integer(self):
-        ''' Used to convert the text into integer
+        ''' 
+        
+        tbd
 
-        -----
-        Description
-        This function is used convert the text
-        information provided by the input field
-        to an integer value. For error handling,
-        the function will any not recognized value
-        transform into the integer 1 (means: daily)
-
-        -----
-        Return
-        Returns the integer for periodicty needed
-        for the add_new_habit_to_db function.
-
-        -----
-        Note
-        The first if function can be left out, since
-        it is automatically covered in the else condition.
-        For a clear assignment of an integer is it written
-        explicitly.
         '''
         period = self.period_variable.get()
         if period == self.period_option_lst[0]:

@@ -1,4 +1,5 @@
-''' Starts the application.
+'''
+Starts the application.
 
 ----------------------------------------
 Description
@@ -14,7 +15,6 @@ Afterwards the MainWindow instance will be created.
 Note:
 For test purposes there is another region implemented to test the status of the
 database during the development process.
-
 '''
 
 # ----------------------------------------
@@ -85,8 +85,9 @@ if __name__ == "__main__":
     # ----------------------------------------
     # CHECK and TEST SECTION
     # ----------------------------------------
+
     # region
-    # Check to see all entries in the database
+    # Check to see all entries in the database.
     all_habits = session.query(Habit).all()
 
     for habit in all_habits:
