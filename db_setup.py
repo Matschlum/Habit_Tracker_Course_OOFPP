@@ -1,18 +1,20 @@
-''' This module contains the basic functions to setup the database
+'''
+This module contains the basis for the database.
 
------
+----------------------------------------
 Description
 
-tbd
+This module creates the base class for the habit classes.
+It further contains functions to create a database or connect to an existing one
+and creates a session for it.
 
------
+----------------------------------------
 Functions
-start_db()
-    checks if the database is existing and creats it if
-    it is necessary.
-start_db_session()
-    starts the session that can be used to interact with
-    the database
+
+start_db
+    Checks if the database is existing and creats it if it is necessary.
+start_db_session
+    Starts the session that can be used to interact with the database.
 '''
 
 # ----------------------------------------
@@ -47,20 +49,21 @@ BaseClass = sqla_declarative_base()
 
 # start_database()
 def start_db(log=False):
-    ''' Starts the database and creates one, if not existing
+    ''' 
+    Starts the database and creates one, if not existing
 
-    -----
-    Parameters
-    log : boolean
+    ----------------------------------------
+    Arguments (Parameters)
+    log
         Sets the status of echo. With log = False the database
         will not dispaly all information in the command line
         (default: False)
 
-    -----
-    Return
+    ----------------------------------------
+    Returns
     engine
-        the connection to the database and starting point to
-        start a session
+        The connection to the database and starting point to
+        start a session.
     '''
     db_file = "habit_tracker.db"
     if not os.path.isfile(db_file) is None:
@@ -73,15 +76,16 @@ def start_db(log=False):
 
 # start_session()
 def start_db_session(engine):
-    ''' Starts a session based on the engine
+    '''
+    Starts a session based on the engine
 
-    -----
-    Parameters
+    ----------------------------------------
+    Arguments (Parameters)
     engine
         Is used to establish a session to the connected database.
 
-    -----
-    Return
+    ----------------------------------------
+    Returns
     session
         as connection to the session for the main module
     '''

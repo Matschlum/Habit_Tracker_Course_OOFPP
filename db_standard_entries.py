@@ -1,12 +1,15 @@
-''' Used as a basis for the standard habits
+'''
+Used as a basis for the standard habits
 
------
+----------------------------------------
 Description
+
 This module contains all information to create standard
 entries for the database in form of lists.
 
------
+----------------------------------------
 Note
+
 Habits can be created within the application itself.
 If additional standard values are needed please follow
 these rules:
@@ -28,7 +31,6 @@ these rules:
     daily, evey other day or weekly).
     The filters in the application will handle 1, 2, 7 as
     values. So it is highly recommended to only use these.
-
 '''
 
 # Standard Habit Names

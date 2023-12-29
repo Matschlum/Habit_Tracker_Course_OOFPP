@@ -12,7 +12,8 @@ using a simple input line.
 Afterwards the MainWindow instance will be created.
 
 ----------------------------------------
-Note:
+Note
+
 For test purposes there is another region implemented to test the status of the
 database during the development process.
 '''
