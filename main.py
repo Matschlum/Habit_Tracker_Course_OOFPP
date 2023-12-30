@@ -41,7 +41,8 @@ from db_functions import (
     add_standard_habits_to_db
 )
 from habit_classes import (
-    Habit
+    Habit,
+    HabitHistory
 )
 from main_window import (
     MainWindow
@@ -104,5 +105,17 @@ if __name__ == "__main__":
         print("Total Fails:", habit.habit_total_fails)
         print("Next Due:", habit.habit_next_due)
         print("-------------------------")
+
+
+    all_history_entries = session.query(HabitHistory).all()
+
+    if all_history_entries:
+        for entry in all_history_entries:
+            print(f"Habit Name: {entry.habit_key}")
+            print(f"Habit ID: {entry.habit_id}")
+            print(f"Entry made: {entry.fail_or_completion_date_time}")
+            print("-----------------------------")
+    else:
+        print("History empty")
     # endregion
 # endregion

@@ -24,6 +24,7 @@
     <Compile Include="create_new_habit_window.py" />
     <Compile Include="db_filter_functions.py" />
     <Compile Include="db_functions.py" />
+    <Compile Include="db_history_functions.py" />
     <Compile Include="db_object_functions.py" />
     <Compile Include="db_setup.py" />
     <Compile Include="db_standard_entries.py" />

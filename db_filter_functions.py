@@ -12,11 +12,15 @@ from sqlalchemy import(
 )
 # Import from other modules
 from habit_classes import(
-    Habit
+    Habit,
+    HabitHistory
 )
+# ----------------------------------------
+# Habit class related filters
+# region ----------------------------------------
 
-# filter_db
-def filter_db(session, period_filter: int = None, active_filter: int =0):
+# filter_habits
+def filter_habits(session, period_filter: int = None, active_filter: int =0):
     ''' Function to filter the db
     
     -----
@@ -83,3 +87,22 @@ def search_for_highscore_in_db(session):
 def filter_for_highscore_objects_in_db(session, highscore_value):
     entries = session.query(Habit).filter(Habit.habit_highscore_streak == highscore_value).all()
     return entries
+
+# endregion
+
+# ----------------------------------------
+# HabitHistory class related filters
+# region ----------------------------------------
+
+# filter_for_history_entries
+def filter_for_history_entries(session, status_filter, time_span):
+    '''
+    CURRENTLY JUST SEARCHING FOR ALL ENTRIES!!!! NO LOGIC IMPLEMENTED
+    '''
+
+    table_content=session.query(HabitHistory).all()
+
+    return table_content
+
+
+# endregion

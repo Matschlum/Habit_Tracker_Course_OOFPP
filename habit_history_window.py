@@ -11,6 +11,9 @@ from tkinter import ttk
 # Related third party imports
 
 # Import from other modules
+from db_filter_functions import (
+    filter_for_history_entries
+)
 
 # Class ShowHabitHistory
 class ShowHabitHistory():
@@ -91,6 +94,7 @@ class ShowHabitHistory():
                 anchor=tk.W
             )
             self.history_table.column(entry, minwidth=50)
+        self.load_history_data_to_table()
         # endregion
 
 
@@ -127,3 +131,33 @@ class ShowHabitHistory():
         '''
         '''
         self.habit_history_root.destroy()
+
+    # load_history_data_to_table
+    def load_history_data_to_table(self):
+        '''
+        '''
+        # TO BE REPLACED BY ACTUAL FILTERS!!!
+        status_filter = True
+        time_span = 10
+        table_content = filter_for_history_entries(
+            session=self.session,
+            status_filter=status_filter,
+            time_span=time_span
+        )
+
+        for table_entry in table_content:
+            if table_entry.type_of_completion is False:
+                completion_status = "Failed to complete"
+            else:
+                completion_status = "Completed in time"
+
+            self.history_table.insert(
+                parent="",
+                index="end",
+                value=(
+                    table_entry.habit_key,
+                    table_entry.fail_or_completion_date_time,
+                    table_entry.corresponding_due_date,
+                    completion_status
+                )
+            )

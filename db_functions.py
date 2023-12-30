@@ -43,6 +43,9 @@ from db_object_functions import (
 from db_filter_functions import (
     filter_db_for_names
 )
+from db_history_functions import (
+    delete_history_entries
+)
 # endregion
 
 # ----------------------------------------
@@ -237,6 +240,7 @@ def delete_entries_from_db(session, habit_names):
     '''
     habit_entries = filter_db_for_names(session=session, names=habit_names)
     for entry in habit_entries:
+        delete_history_entries(session=session, habit_object=entry)
         session.delete(entry)
     session.commit()
 # endregion

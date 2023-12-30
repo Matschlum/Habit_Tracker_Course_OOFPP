@@ -22,7 +22,7 @@ from db_object_functions import (
     manage_tracking_status
 )
 from db_filter_functions import(
-    filter_db
+    filter_habits
 )
 from pop_up_windows import(
     ShowHighscoreWindow,
@@ -129,7 +129,7 @@ class MainWindow():
         )
         self.show_active_passiv_habits_button = tk.Button(
             self.subframe_top_buttons,
-            text="Show active/passiv habits",
+            text="Show tracked/not tracked habits",
             command=self.click_filter_active
         )
         self.show_daily_button = tk.Button(
@@ -414,7 +414,7 @@ class MainWindow():
         '''
 
         # Call the filter function
-        table_content = filter_db(
+        table_content = filter_habits(
             self.session,
             self.habit_period_filter,
             self.habit_active_filter
@@ -422,13 +422,22 @@ class MainWindow():
 
         # Load the data into the table in the main window.
         for table_entry in table_content:
+            if table_entry.habit_active_status is False:
+                active_status = "Not tracked"
+            else:
+                active_status = "Tracked"
+            if table_entry.habit_tracking_status is False:
+                tracking_status = "To be completed"
+            else:
+                tracking_status = "Completed"
+
             self.habit_table.insert(
                 parent="",
                 index="end",
                 value=(
                     table_entry.habit_name,
-                    table_entry.habit_active_status,
-                    table_entry.habit_tracking_status,
+                    active_status,                          #table_entry.habit_active_status,
+                    tracking_status,                        #table_entry.habit_tracking_status,
                     table_entry.habit_next_due,
                     table_entry.habit_current_streak,
                     table_entry.habit_highscore_streak,

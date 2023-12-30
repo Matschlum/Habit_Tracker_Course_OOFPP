@@ -14,7 +14,7 @@ HabitHistory
 
 # ----------------------------------------
 # Imports
-# ----------------------------------------
+# region ----------------------------------------
 
 # Standard library imports
 import datetime
@@ -25,12 +25,14 @@ from sqlalchemy import (
     Integer as sqla_Integer,
     Boolean as sqla_Boolean,
     Date as sqla_Date,
+    DateTime as sqla_DateTime,
     ForeignKey as sqla_ForeignKey
 )
 # Import from other modules
 from db_setup import (
     BaseClass
 )
+# endregion
 
 # ----------------------------------------
 # Classes
@@ -167,7 +169,7 @@ class HabitHistory(BaseClass):
     )
     fail_or_completion_date_time = sqla_Column(
         "fail_or_completion_date_time",
-        sqla_Date
+        sqla_DateTime
     )
     corresponding_due_date = sqla_Column(
         "corresponding_due_date",
@@ -191,6 +193,7 @@ class HabitHistory(BaseClass):
         tbd
 
         '''
+
         self.habit_key = habit_key
         self.fail_or_completion_date_time = fail_or_completion_date_time
         self.corresponding_due_date = corresponding_due_date

@@ -46,6 +46,9 @@ from db_object_functions import (
     reset_tracking_status,
     reset_current_streak
 )
+from db_history_functions import (
+    create_new_history_entry
+)
 
 
 # loop_for_update_due_date
@@ -109,7 +112,11 @@ def check_due_date(session):
     )
     for habit_entry in habit_entries:
         if habit_entry.habit_next_due < current_date:
+            print(f"for {habit_entry.habit_name} the due date passed // check_due_date / update_loop.py")
             check_tracking_status(session, habit_entry)
+        else:
+            print(f"for {habit_entry.habit_name} all good // check_due_date / update_loop.py")
+        
 
 
 # check_tracking_status
@@ -146,6 +153,7 @@ def check_tracking_status(session, habit_object):
         count_fails_up(session, habit_object)
         reset_current_streak(session, habit_object)
         calculate_new_due_date(session, habit_object)
+        create_new_history_entry(session=session, habit_object=habit_object)
 
 
 # calculate_new_due_date

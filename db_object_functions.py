@@ -53,6 +53,9 @@ import datetime
 from db_filter_functions import(
     filter_db_for_names
 )
+from db_history_functions import(
+    create_new_history_entry
+)
 # endregion
 
 # ----------------------------------------
@@ -184,6 +187,7 @@ def set_tracking_status_to_true(session, habit_object):
     '''
     habit_object.habit_tracking_status = True
     session.commit()
+    create_new_history_entry(session=session, habit_object=habit_object)
 
 # streak_calculator
 def streak_calculator(session, habit_object):
