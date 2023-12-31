@@ -252,8 +252,17 @@ def delete_entries_from_db(session, habit_names):
 def modify_existing_object_in_db(session, original_object, name, description, period, active_status):
     function_status_messages = []
     if original_object.habit_name != name:
-        original_object.habit_name = name
-        function_status_messages.append(301)
+        check_name = (
+            session.query(Habit)
+            .filter_by(habit_name=name)
+            .first()
+        )
+        if check_name is None:
+            original_object.habit_name = name
+            function_status_messages.append(301)
+        else:
+            function_status_messages.append(1)
+            return function_status_messages
     else:
         function_status_messages.append(401)
 

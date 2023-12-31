@@ -3,6 +3,7 @@ This module contains functions to handle the database objects.
 
 ----------------------------------------
 Description
+----------------------------------------
 
 The functions in this module are for adjusting single or multiple values on existing database objects.
 For creating and deleting objects see the module db_functions.
@@ -11,6 +12,7 @@ Functions that are used to modify values from the objects are in the second regi
 
 ----------------------------------------
 Functions
+----------------------------------------
 from region 1 (indirect):
 
 change_active_passiv_status
@@ -40,14 +42,12 @@ streak_calculator
     This function is used to calculate the current and highscore streak and adjusts the values of the object.
 
 '''
-
 # ----------------------------------------
 # Imports
 # region ----------------------------------------
 
 # Standard library imports
 import datetime
-# Related third party imports
 
 # Import from other modules
 from db_filter_functions import(
@@ -56,6 +56,7 @@ from db_filter_functions import(
 from db_history_functions import(
     create_new_history_entry
 )
+
 # endregion
 
 # ----------------------------------------

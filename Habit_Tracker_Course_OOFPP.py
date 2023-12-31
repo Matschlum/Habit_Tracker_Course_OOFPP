@@ -1,0 +1,91 @@
+"""
+
+Styling guidlines:
+Copy for doc strings:
+----------------------------------------
+Description
+----------------------------------------
+
+Copy for regions:
+# ----------------------------------------
+# Imports
+# region ----------------------------------------
+
+# endregion
+
+Blank line before:
+- # -------....
+- # endregion
+
+Blank line after:
+- # region ------...
+
+----------------------------------------------------
+----------------------------------------------------
+----------------------------------------------------
+----------------------------------------------------
+GUIDE FOR MODULES: C&P:
+
+'''
+Short description as a title ending with a .
+
+----- Description -----
+
+Adding description as complete sentences about what is this module for.
+
+----- Classes - only if not empty -----
+NameOfTheClass: Short descritpion of the class as full sentence
+
+----- Functions - only if not empty -----
+nameofthefunction:  Short description of the function as full sentence
+
+----- Note - only if not empty -----
+Note for the user in full sentences.
+'''
+
+----------------------------------------------------
+----------------------------------------------------
+----------------------------------------------------
+----------------------------------------------------
+GUIDE FOR CLASSES: C&P
+
+'''
+Short description as a title ending with a .
+
+----- Description -----
+Adding description as complete sentences about what is this class for.
+
+----- Attributes - onyl if not empty -----
+attribute (type):   short description as full sentence
+
+----- Methods - only if not empty -----
+method: short description as full sentence
+'''
+
+----------------------------------------------------
+----------------------------------------------------
+----------------------------------------------------
+----------------------------------------------------
+GUIDE FOR FUNCTIONS/METHODS: C&P
+'''
+Short description as a title ending with a .
+
+----- Description -----
+Adding description as complete sentences about what is this function for.
+
+----- Arguments - onyl if not empty -----
+argument (type):   short description as full sentence
+
+----- Returns - onyl if not empty -----
+return_value (type):   short description as full sentence
+'''
+
+
+
+"""
+
+"""
+This string is exactly 79 signs long
+-------------------------------------------------------------------------------
+
+"""
