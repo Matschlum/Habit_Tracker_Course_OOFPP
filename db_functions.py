@@ -23,6 +23,10 @@ add_new_entry_to_db
 delete_entries_from_db
     This function receives a list of habit names and deletes the corresponding
     objects from the database.
+
+modify_existing_object_in_db
+    This function receives the original object and the modifications.
+    It modifies only the changed values.
 '''
 
 # ----------------------------------------
@@ -243,4 +247,34 @@ def delete_entries_from_db(session, habit_names):
         delete_history_entries(session=session, habit_object=entry)
         session.delete(entry)
     session.commit()
+
+# modify_existing_object_in_db
+def modify_existing_object_in_db(session, original_object, name, description, period, active_status):
+    function_status_messages = []
+    if original_object.habit_name != name:
+        original_object.habit_name = name
+        function_status_messages.append(301)
+    else:
+        function_status_messages.append(401)
+
+    if original_object.habit_description != description:
+        original_object.habit_description = description
+        function_status_messages.append(302)
+    else:
+        function_status_messages.append(402)
+
+    if original_object.habit_period != period:
+        original_object.habit_period = period
+        function_status_messages.append(303)
+    else:
+        function_status_messages.append(403)
+
+    if original_object.habit_active_status != active_status:
+        original_object.habit_active_status = active_status
+        function_status_messages.append(304)
+    else:
+        function_status_messages.append(404)
+
+    session.commit()
+    return function_status_messages
 # endregion

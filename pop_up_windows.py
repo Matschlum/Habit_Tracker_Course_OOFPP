@@ -165,7 +165,15 @@ class InputMessageWindow():
             120: "ERROR: Standard Periodicty does not only contain integers.",
             121: ("ERROR: Standard status for active does not only "
                   "contain boolean."),
-            122: "ERROR: Standad lists have different length."
+            122: "ERROR: Standad lists have different length.",
+            301: "Name of habit changed.",
+            302: "Description of habit changed.",
+            303: "Periodicity of habit changed.",
+            304: "Status for active of habit changed.",
+            401: "No name changed.",
+            402: "No description changed.",
+            403: "No periodicity changed.",
+            404: "No status for active chagned."
             }
         if message_codes is not None:
             self.input_message_root = tk.Tk()

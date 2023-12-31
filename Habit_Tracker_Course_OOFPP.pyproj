@@ -21,7 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="create_new_habit_window.py" />
+    <Compile Include="create_new_change_habit_window.py" />
     <Compile Include="db_filter_functions.py" />
     <Compile Include="db_functions.py" />
     <Compile Include="db_history_functions.py" />

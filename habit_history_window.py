@@ -151,13 +151,15 @@ class ShowHabitHistory():
             else:
                 completion_status = "Completed in time"
 
+            display_date_time = table_entry.fail_or_completion_date_time.strftime("%Y/%m/%d - %H:%M:%S")
+
             self.history_table.insert(
                 parent="",
                 index="end",
                 value=(
                     table_entry.habit_key,
-                    table_entry.fail_or_completion_date_time,
+                    display_date_time,                      # table_entry.fail_or_completion_date_time
                     table_entry.corresponding_due_date,
-                    completion_status
+                    completion_status                       # table_entry.type_of_completion
                 )
             )

@@ -19,17 +19,18 @@ from tkinter import ttk
 # Import from other modules
 from db_object_functions import (
     change_active_passiv_status,
-    manage_tracking_status
+    manage_tracking_status,
 )
 from db_filter_functions import(
-    filter_habits
+    filter_habits,
+    filter_db_for_names
 )
 from pop_up_windows import(
     ShowHighscoreWindow,
     InputMessageWindow
 )
-from create_new_habit_window import(
-    CreateNewHabitWindow
+from create_new_change_habit_window import(
+    CreateChangeHabitWindow
 )
 from habit_history_window import(
     ShowHabitHistory
@@ -297,7 +298,7 @@ class MainWindow():
         tbd
 
         '''
-        CreateNewHabitWindow(main_window=self, session=self.session)
+        CreateChangeHabitWindow(main_window=self, session=self.session, habit_object=None)
   
     # click_close_application
     def click_close_application(self):
@@ -396,7 +397,9 @@ class MainWindow():
     def click_change_habit(self):
         selected_names = self.catch_selected_entries()
         if selected_names:
-            print("missing function for change habit")
+            habit_entries = filter_db_for_names(session=self.session, names=selected_names)
+            for habit_entry in habit_entries:
+                CreateChangeHabitWindow(main_window=self, session=self.session, habit_object=habit_entry)
 
     # click_delete_habit
     def click_delete_habit(self):
