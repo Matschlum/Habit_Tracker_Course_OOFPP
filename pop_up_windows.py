@@ -166,6 +166,7 @@ class InputMessageWindow():
             121: ("ERROR: Standard status for active does not only "
                   "contain boolean."),
             122: "ERROR: Standad lists have different length.",
+            200: "ERROR: Habit tracking status cannot be changed, habit marked as inactive.",
             301: "Name of habit changed.",
             302: "Description of habit changed.",
             303: "Periodicity of habit changed.",
@@ -177,7 +178,7 @@ class InputMessageWindow():
             }
         if message_codes is not None:
             self.input_message_root = tk.Tk()
-            self.input_message_root.geometry("400x200")
+            self.input_message_root.geometry("480x280")
             self.input_message_root.title("Information - Habit Tracker")
             self.input_message_frame = tk.Frame(self.input_message_root)
             self.input_message_frame.pack(fill="both", expand=True)
