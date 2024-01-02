@@ -30,7 +30,6 @@ GUIDE FOR MODULES: C&P:
 Short description as a title ending with a .
 
 ----- Description -----
-
 Adding description as complete sentences about what is this module for.
 
 ----- Classes - only if not empty -----
@@ -87,5 +86,25 @@ return_value (type):   short description as full sentence
 """
 This string is exactly 79 signs long
 -------------------------------------------------------------------------------
+
+"""
+
+"""
+Ready:
+create_new_change_habit_window.py
+db_filter_functions.py
+
+"""
+
+"""
+
+Scripts that help:
+
+1. isort ...
+2. write comments and format
+2/5. mypy ...
+3. black ...
+4. pylint ...
+5. pycodestyle ...
 
 """

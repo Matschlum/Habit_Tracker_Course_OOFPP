@@ -189,12 +189,12 @@ class InputMessageWindow():
             self.ok_button = tk.Button(
                 self.input_message_frame,
                 text="Ok",
-                command=self.click_ok
+                command=self.click_close_window
             )
             self.ok_button.pack(padx=10, pady=10)
     
     # click_ok
-    def click_ok(self):
+    def click_close_window(self):
         ''' 
        
         tbd

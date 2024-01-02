@@ -1,32 +1,14 @@
 '''
-This module contains the functions to add and delete objects from the db.
+This module contains the functions used to add, delete or change habits.
 
-----------------------------------------
-Description
+----- Description -----
+In this module are functions to add and delete habits to/from the database as well as to change habit objects.
 
-This module is used for the functions that add new objects to the database,
-including the standard values.
-Further the delete object function is located in this module.
-
------
-Functions
-
-add_standard_habits_to_db
-    This function is used to add the standard values from
-    db_standard_entries.py to the database.
-
-add_new_entry_to_db
-    This function is used to actually perform the process of adding new objects
-    to the database. It is used by the add_standard_habits_to_db function as
-    well as via the GUI.
-
-delete_entries_from_db
-    This function receives a list of habit names and deletes the corresponding
-    objects from the database.
-
-modify_existing_object_in_db
-    This function receives the original object and the modifications.
-    It modifies only the changed values.
+----- Functions -----
+add_standard_habits_to_db:      This function is used to add the standard values to the database. It works with the add_new_entry_to_db function.
+add_new_entry_to_db:            This function is adding new habits to the database.
+delete_entries_from_db:         It is used to delete entries from the database, including the corresponding history entries.
+modify_existing_object_in_db:   After modifing some values of an existing habit, this function changes the values of the objects.
 '''
 
 # ----------------------------------------
@@ -38,24 +20,16 @@ modify_existing_object_in_db
 # Related third party imports
 
 # Import from other modules
-from habit_classes import (
-    Habit
-)
-from db_object_functions import (
-    manage_active_passiv_status
-)
-from db_filter_functions import (
-    filter_db_for_names
-)
-from db_history_functions import (
-    delete_history_entries
-)
+from db_filter_functions import filter_db_for_names
+from db_history_functions import delete_history_entries
+from db_object_functions import manage_active_passiv_status
+from habit_classes import Habit
+
 # endregion
 
 # ----------------------------------------
 # Functions
 # region ----------------------------------------
-
 
 # add_standard_habits_to_db
 def add_standard_habits_to_db(
@@ -66,34 +40,7 @@ def add_standard_habits_to_db(
     standard_active_status
 ):
     '''
-    This function is used to add the standard values to the database.
 
-    ----------------------------------------
-    Description
-
-    This function uses lists for the key values from a habit object, name,
-    description, periodicity and active status to create new objects.
-    Therefore the lists will be validated. If the lists fulfill the
-    requirements, the functions calls the add_new_entry_to_db function
-    to add the values as objects to the db.
-
-    ----------------------------------------
-    Arguments (Parameters)
-
-    session
-        Session allwos the interaction with the database. It is passed
-        to the check_due_date function.
-    standard_name, standard_description, standard_period,
-    standard_active_status
-        These are lists containing the standarad values to be added to
-        the database.
-
-    ----------------------------------------
-    Returns
-
-    function_status_message / function_status_message_adding_entries
-        This return values are used for the InputMessageWindow to show the
-        user the status of the input.
     '''
 
     # Validation of the input lists to ensure correct object creation.
@@ -149,34 +96,6 @@ def add_new_entry_to_db(
     active_status: bool
 ):
     '''
-    This function is used to create a new habit object and adds it to the
-    database.
-
-    ----------------------------------------
-    Description
-
-    This function uses input values to create an object of the habit class
-    and adds the object to the database.
-    Before creating the object, the function validates the input data to be
-    suitable for an object.
-    If the input values are not suitable, then no object is created, instead
-    a status message is created and returned.
-
-    ----------------------------------------
-    Arguments (Parameters)
-
-    session
-        Session allwos the interaction with the database. It is passed
-        to the check_due_date function.
-    name, description, period, active_status
-        These are values containing the needed values to create a habit object.
-
-    ----------------------------------------
-    Returns
-
-    function_status_message
-        This return value is used for the InputMessageWindow to show the user
-        the status of the input.
     '''
     # Validation of the input to ensure correct object creation.
     function_status_message = []
@@ -218,29 +137,7 @@ def add_new_entry_to_db(
 # delete_entries_from_db
 def delete_entries_from_db(session, habit_names):
     '''
-    This function is used to delete entries from the database.
 
-    ----------------------------------------
-    Description
-
-    This function takes a list of habit names and searches for the
-    corresponding objects.
-    These objects are then deleted from the database.
-
-    ----------------------------------------
-    Arguments (Parameters)
-
-    session
-        Session allwos the interaction with the database. It is passed
-        to the check_due_date function.
-    habit_names
-        A list of habit names, that are used to find objects from the
-        habit class in the database.
-
-    ----------------------------------------
-    Returns
-
-    None
     '''
     habit_entries = filter_db_for_names(session=session, names=habit_names)
     for entry in habit_entries:

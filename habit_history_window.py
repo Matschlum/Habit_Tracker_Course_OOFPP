@@ -7,6 +7,7 @@ tbd
 # Standard library imports
 import tkinter as tk
 from tkinter import ttk
+from unittest.loader import VALID_MODULE_NAME
 
 # Related third party imports
 
@@ -71,6 +72,48 @@ class ShowHabitHistory():
         self.session = session
         # endregion
 
+        digit_validation = self.habit_history_root.register(
+            self.validation_of_entry_data
+        )
+        widget_properties = {"padx": 10, "pady": 10, "sticky": "w"}
+
+        self.status_filter = 0
+        self.timespan = None
+
+        # ----------------------------------------
+        # Filter buttons
+        # region ----------------------------------------
+        self.reset_filter_button = tk.Button(
+            self.subframe_filter_buttons,
+            text="Reset filter settings",
+            command=self.click_reset_filter_settings
+        )
+
+        self.show_fails_completed_filter_button = tk.Button(
+            self.subframe_filter_buttons,
+            text="Show fails / completed",
+            command=self.click_show_fails_completed
+        )
+
+        self.show_timespan_only_filter_button = tk.Button(
+            self.subframe_filter_buttons,
+            text="Show timespan only",
+            command=self.click_show_timespan_only
+        )
+
+        self.entry_timespan = tk.Entry(
+            self.subframe_filter_buttons,
+            validate="all",
+            validatecommand=(digit_validation, "%P")
+        )
+        self.entry_timespan.bind("<KeyRelease>", self.on_releasing_key)
+
+        self.timespan_information = tk.Label(
+            self.subframe_filter_buttons,
+            text="No entry or 0 means default (None),\nMax. value is 36500 days (approx. 100 years)",
+            justify="left"
+        )
+
         # ----------------------------------------
         # Creating the table to show the habits to the user.
         # region ----------------------------------------
@@ -112,6 +155,27 @@ class ShowHabitHistory():
         # Place the widgets into the frames.
         # region ----------------------------------------
 
+        self.reset_filter_button.grid(
+            row=0, column=0,
+            **widget_properties
+        )
+        self.show_fails_completed_filter_button.grid(
+            row=0, column=1,
+            **widget_properties
+        )
+        self.entry_timespan.grid(
+            row=0, column=2,
+            **widget_properties
+        )
+        self.show_timespan_only_filter_button.grid(
+            row=0, column=3,
+            **widget_properties
+        )
+        self.timespan_information.grid(
+            row=0, column=4,
+            **widget_properties
+        )
+
         self.history_table.grid(
             row=0, column=0, columnspan=4,
             padx=10, pady=10,
@@ -132,17 +196,63 @@ class ShowHabitHistory():
         '''
         self.habit_history_root.destroy()
 
+
+    # click_reset_filter_settings
+    def click_reset_filter_settings(self):
+        self.timespan = None
+        self.status_filter = 0
+
+        self.update_table()
+
+    # click_show_fails_completed
+    def click_show_fails_completed(self):
+        if self.status_filter == 2:
+            self.status_filter = 0
+        else:
+            self.status_filter += 1
+        self.update_table()
+
+    # click_show_timespan_only
+    def click_show_timespan_only(self):
+        if self.entry_timespan.get() == "" or self.entry_timespan.get() == "0":
+            self.timespan = None
+        else:
+            user_input = int(self.entry_timespan.get())
+            self.timespan = min(user_input, 36500)
+        self.update_table()
+
+    
+    # on_pressing_key
+    def on_releasing_key(self, not_used_event):
+        value_after_pressing = self.entry_timespan.get()
+        if value_after_pressing.isdigit():
+            if value_after_pressing.isdigit():
+                value_after_pressing = int(value_after_pressing)
+            else:
+                value_after_pressing = 0
+
+            value_after_pressing = min(value_after_pressing, 36500)
+
+            self.entry_timespan.delete(0, tk.END)
+            self.entry_timespan.insert(0, str(value_after_pressing))
+
+    # validation_of_entry_data
+    def validation_of_entry_data(self, P):
+        if P.isdigit() is True:
+            return True
+        elif P == "":
+            return True
+        else:
+            return False
+
     # load_history_data_to_table
     def load_history_data_to_table(self):
         '''
         '''
-        # TO BE REPLACED BY ACTUAL FILTERS!!!
-        status_filter = True
-        time_span = 10
         table_content = filter_for_history_entries(
             session=self.session,
-            status_filter=status_filter,
-            time_span=time_span
+            status_filter=self.status_filter,
+            timespan=self.timespan
         )
 
         for table_entry in table_content:
@@ -163,3 +273,10 @@ class ShowHabitHistory():
                     completion_status                       # table_entry.type_of_completion
                 )
             )
+
+    # update_table
+    def update_table(self):
+        for row in self.history_table.get_children():
+            self.history_table.delete(row)
+        # Call the load_data_to_table function
+        self.load_history_data_to_table()

@@ -1,4 +1,4 @@
-'''
+"""
 This module is used to create the window to change or add habits.
 
 ----- Description -----
@@ -8,7 +8,7 @@ habits to the application, or to modify existing ones.
 ----- Classes -----
 CreateChangeHabitWindow:    This is the class to create the change/add habit
 window based on Tkinter.
-'''
+"""
 # ----------------------------------------
 # Imports
 # region ----------------------------------------
@@ -17,20 +17,15 @@ window based on Tkinter.
 import tkinter as tk
 
 # Import from other modules
-from db_functions import (
-    add_new_entry_to_db,
-    modify_existing_object_in_db
-)
-from pop_up_windows import (
-    InputMessageWindow
-)
+from db_functions import add_new_entry_to_db, modify_existing_object_in_db
+from pop_up_windows import InputMessageWindow
 
 # endregion
 
 
 # Class CreateChangeHabitWindow
-class CreateChangeHabitWindow():
-    '''
+class CreateChangeHabitWindow:
+    """
     Class to create a window to change and modify habits.
 
     ----- Description -----
@@ -67,10 +62,10 @@ class CreateChangeHabitWindow():
     Currently there are three options for periodicity (daily, every other day
     and weekly). A description how to add, change, remove options is given in
     the readme.md.
-    '''
+    """
 
     def __init__(self, main_window, session, habit_object=None):
-        '''
+        """
         Constructor for the CreateChangeHabitWindow class.
 
         ----- Arguments -----
@@ -80,7 +75,7 @@ class CreateChangeHabitWindow():
                                     session.
         habit_object (Habit):       Argument to contain the object to be
                                     modified by the user. Default set to None.
-        '''
+        """
         # ----------------------------------------
         # Setting up the basics for the GUI to create or change habits.
         # region ----------------------------------------
@@ -107,16 +102,12 @@ class CreateChangeHabitWindow():
         self.create_change_main_frame.grid(sticky="nsew")
         self.subframe_input_values = tk.Frame(self.create_change_main_frame)
         self.subframe_input_values.grid(
-            row=0, column=0,
-            padx=10, pady=10,
-            sticky="nsew"
+            row=0, column=0, padx=10, pady=10, sticky="nsew"
         )
 
         self.subframe_buttons = tk.Frame(self.create_change_main_frame)
         self.subframe_buttons.grid(
-            row=1, column=0,
-            padx=10, pady=10,
-            sticky="nsew"
+            row=1, column=0, padx=10, pady=10, sticky="nsew"
         )
 
         self.create_change_root.grid_columnconfigure(0, weight=1)
@@ -132,22 +123,17 @@ class CreateChangeHabitWindow():
                 self.create_change_main_frame
             )
             self.subframe_additional_information.grid(
-                row=2, column=0,
-                padx=10, pady=10,
-                sticky="nsew"
+                row=2, column=0, padx=10, pady=10, sticky="nsew"
             )
             self.create_change_main_frame.grid_columnconfigure(2, weight=1)
             self.subframe_additional_information.grid_columnconfigure(
-                0,
-                weight=1
+                0, weight=1
             )
             self.subframe_additional_information.grid_columnconfigure(
-                1,
-                weight=1
+                1, weight=1
             )
             self.subframe_additional_information.grid_columnconfigure(
-                2,
-                weight=1
+                2, weight=1
             )
 
         # endregion
@@ -159,34 +145,18 @@ class CreateChangeHabitWindow():
         self.main_window = main_window
         self.session = session
 
-        self.period_option_lst = [
-            "Daily",
-            "Every Other Day",
-            "Weekly"
-        ]
-        self.period_variable = tk.StringVar(
-            self.create_change_root
-        )
+        self.period_option_lst = ["Daily", "Every Other Day", "Weekly"]
+        self.period_variable = tk.StringVar(self.create_change_root)
         if self.create_new_habit_flag:
-            self.period_variable.set(
-                self.period_option_lst[0]
-            )
+            self.period_variable.set(self.period_option_lst[0])
         elif self.habit_object.habit_period == 1:
-            self.period_variable.set(
-                self.period_option_lst[0]
-            )
+            self.period_variable.set(self.period_option_lst[0])
         elif self.habit_object.habit_period == 2:
-            self.period_variable.set(
-                self.period_option_lst[1]
-            )
+            self.period_variable.set(self.period_option_lst[1])
         elif self.habit_object.habit_period == 7:
-            self.period_variable.set(
-                self.period_option_lst[2]
-            )
+            self.period_variable.set(self.period_option_lst[2])
 
-        self.active_checkbox_status = tk.BooleanVar(
-            self.create_change_root
-        )
+        self.active_checkbox_status = tk.BooleanVar(self.create_change_root)
         if self.create_new_habit_flag:
             self.active_checkbox_status.set(False)
         else:
@@ -203,11 +173,9 @@ class CreateChangeHabitWindow():
         # ----------------------------------------
         # Creating the labels and entry fields for the input values.
         # region ----------------------------------------
-
+        # Labels
         self.headline_label_category = tk.Label(
-            self.subframe_input_values,
-            text="Category",
-            justify="left"
+            self.subframe_input_values, text="Category", justify="left"
         )
         self.headline_label_enter_data = tk.Label(
             self.subframe_input_values,
@@ -217,17 +185,11 @@ class CreateChangeHabitWindow():
         self.headline_label_default_info = tk.Label(
             self.subframe_input_values,
             text="Information about default values",
-            justify="left"
+            justify="left",
         )
 
         self.name_label = tk.Label(
-            self.subframe_input_values,
-            text="Habit Name",
-            justify="left"
-        )
-        self.name_entry = tk.Entry(
-            self.subframe_input_values,
-            text="Enter name"
+            self.subframe_input_values, text="Habit Name", justify="left"
         )
         self.name_information_label = tk.Label(
             self.subframe_input_values,
@@ -240,42 +202,41 @@ class CreateChangeHabitWindow():
             text="Habit Description",
             justify="left"
         )
-        self.description_entry = tk.Text(
-            self.subframe_input_values,
-            height=3,
-            width=50,
-            wrap="word"
-        )
         self.description_information_label = tk.Label(
             self.subframe_input_values,
             text="Default value will be 'default'",
-            justify="left"
+            justify="left",
         )
 
         self.period_label = tk.Label(
+            self.subframe_input_values, text="Periodicity", justify="left"
+        )
+        self.period_information_label = tk.Label(
             self.subframe_input_values,
-            text="Periodicity",
-            justify="left"
+            text="the default value will be 'daily'",
+            justify="left",
+        )
+
+        self.active_label = tk.Label(
+            self.subframe_input_values,
+            text="Do you want to track the habit?",
+            justify="left",
+        )
+
+        # Entry fields
+        self.name_entry = tk.Entry(
+            self.subframe_input_values, text="Enter name"
+        )
+        self.description_entry = tk.Text(
+            self.subframe_input_values, height=3, width=50, wrap="word"
         )
         self.period_entry = tk.OptionMenu(
             self.subframe_input_values,
             self.period_variable,
             *self.period_option_lst
         )
-        self.period_information_label = tk.Label(
-            self.subframe_input_values,
-            text="the default value will be 'daily'",
-            justify="left"
-        )
-
-        self.active_label = tk.Label(
-            self.subframe_input_values,
-            text="Do you want to track the habit?",
-            justify="left"
-        )
         self.active_entry = tk.Checkbutton(
-            self.subframe_input_values,
-            variable=self.active_checkbox_status
+            self.subframe_input_values, variable=self.active_checkbox_status
         )
 
         # endregion
@@ -286,26 +247,24 @@ class CreateChangeHabitWindow():
 
         if self.create_new_habit_flag:
             self.apply_button = tk.Button(
-                self.subframe_buttons,
-                text="Apply",
-                command=self.click_apply
+                self.subframe_buttons, text="Apply", command=self.click_apply
             )
             self.apply_and_close_button = tk.Button(
                 self.subframe_buttons,
                 text="Apply and Close",
-                command=self.click_apply_and_close
+                command=self.click_apply_and_close,
             )
         else:
             self.change_and_close_button = tk.Button(
                 self.subframe_buttons,
                 text="Change and close",
-                command=self.click_change_and_close
+                command=self.click_change_and_close,
             )
 
         self.close_button = tk.Button(
             self.subframe_buttons,
             text="Close",
-            command=self.click_close
+            command=self.click_close_window
         )
 
         # endregion
@@ -319,23 +278,23 @@ class CreateChangeHabitWindow():
             self.tracking_status_title_lable = tk.Label(
                 self.subframe_additional_information,
                 text="Tracking Status",
-                justify="left"
+                justify="left",
             )
             self.tracking_status_value_label = tk.Label(
                 self.subframe_additional_information,
                 text=self.written_tracking_status,
-                justify="left"
+                justify="left",
             )
 
             self.creation_date_title_label = tk.Label(
                 self.subframe_additional_information,
                 text="Creation date",
-                justify="left"
+                justify="left",
             )
             self.creation_date_value_label = tk.Label(
                 self.subframe_additional_information,
                 text=self.habit_object.habit_creation_date,
-                justify="left"
+                justify="left",
             )
 
             self.start_date_title_label = tk.Label(
@@ -346,18 +305,18 @@ class CreateChangeHabitWindow():
             self.start_date_value_label = tk.Label(
                 self.subframe_additional_information,
                 text=self.habit_object.habit_start_date,
-                justify="left"
+                justify="left",
             )
 
             self.current_streak_title_label = tk.Label(
                 self.subframe_additional_information,
                 text="Current streak",
-                justify="left"
+                justify="left",
             )
             self.current_streak_value_label = tk.Label(
                 self.subframe_additional_information,
                 text=self.habit_object.habit_current_streak,
-                justify="left"
+                justify="left",
             )
 
             self.highscore_title_label = tk.Label(
@@ -368,29 +327,29 @@ class CreateChangeHabitWindow():
             self.highscore_value_label = tk.Label(
                 self.subframe_additional_information,
                 text=self.habit_object.habit_highscore_streak,
-                justify="left"
+                justify="left",
             )
 
             self.total_fails_title_label = tk.Label(
                 self.subframe_additional_information,
                 text="Total failures",
-                justify="left"
+                justify="left",
             )
             self.total_fails_value_label = tk.Label(
                 self.subframe_additional_information,
                 text=self.habit_object.habit_total_fails,
-                justify="left"
+                justify="left",
             )
 
             self.next_due_title_label = tk.Label(
                 self.subframe_additional_information,
                 text="Next Due Date",
-                justify="left"
+                justify="left",
             )
             self.next_due_value_label = tk.Label(
                 self.subframe_additional_information,
                 text=self.habit_object.habit_next_due,
-                justify="left"
+                justify="left",
             )
 
         # endregion
@@ -403,8 +362,7 @@ class CreateChangeHabitWindow():
         if self.create_new_habit_flag is False:
             self.name_entry.insert(tk.END, self.habit_object.habit_name)
             self.description_entry.insert(
-                tk.END,
-                self.habit_object.habit_description
+                tk.END, self.habit_object.habit_description
             )
             # active status and period are already set in the region to define
             # the variables
@@ -432,33 +390,19 @@ class CreateChangeHabitWindow():
             (self.active_entry, 4, 1),
         ]
         for widget, row, column in entry_widgets_position:
-            widget.grid(
-                row=row, column=column,
-                **widget_properties
-            )
+            widget.grid(row=row, column=column, **widget_properties)
 
         if self.create_new_habit_flag:
-            self.apply_button.grid(
-                row=0, column=0,
-                **widget_properties
-            )
+            self.apply_button.grid(row=0, column=0, **widget_properties)
             self.apply_and_close_button.grid(
-                row=0, column=1,
-                **widget_properties
+                row=0, column=1, **widget_properties
             )
-            self.close_button.grid(
-                row=0, column=2,
-                **widget_properties
-            )
+            self.close_button.grid(row=0, column=2, **widget_properties)
         else:
             self.change_and_close_button.grid(
-                row=0, column=0,
-                **widget_properties
+                row=0, column=0, **widget_properties
             )
-            self.close_button.grid(
-                row=0, column=1,
-                **widget_properties
-            )
+            self.close_button.grid(row=0, column=1, **widget_properties)
 
         if self.create_new_habit_flag is False:
             additional_info_widgets_position = [
@@ -477,13 +421,13 @@ class CreateChangeHabitWindow():
                 (self.total_fails_title_label, 2, 4, title_properties),
                 (self.total_fails_value_label, 2, 5, widget_properties),
             ]
-            for (widget, row, column, style_properties) in (
-                additional_info_widgets_position
-            ):
-                widget.grid(
-                    row=row, column=column,
-                    **style_properties
-                )
+            for (
+                widget,
+                row,
+                column,
+                style_properties,
+            ) in additional_info_widgets_position:
+                widget.grid(row=row, column=column, **style_properties)
 
         # endregion
 
@@ -493,7 +437,7 @@ class CreateChangeHabitWindow():
 
     # click_apply
     def click_apply(self):
-        '''
+        """
         Method to create a new habit based on the data entered.
 
         ----- Description -----
@@ -504,39 +448,39 @@ class CreateChangeHabitWindow():
         Further it takes the return message from the adding function and
         creates an instance of the InputMessageWindow to inform the user about
         the state.
-        '''
+        """
         message = add_new_entry_to_db(
             session=self.session,
             name=self.name_entry.get(),
             description=self.description_entry.get("1.0", tk.END).strip(),
             period=self.convert_period_to_integer(),
-            active_status=self.active_checkbox_status.get()
+            active_status=self.active_checkbox_status.get(),
         )
         self.main_window.update_data_in_table()
         if message is not None:
             InputMessageWindow(message)
 
     # click_close
-    def click_close(self):
-        '''
+    def click_close_window(self):
+        """
         Closing the window, without saving any changes.
-        '''
+        """
         self.create_change_root.destroy()
 
     # click_apply_and_close
     def click_apply_and_close(self):
-        '''
+        """
         Applying the changes and closing the window.
 
         ----- Description -----
         Calling firstly the click_apply method and then the click_close method.
-        '''
+        """
         self.click_apply()
-        self.click_close()
+        self.click_close_window()
 
     # click_change_and_close
     def click_change_and_close(self):
-        '''
+        """
         This method is used to first apply the changes and then close the
         window.
 
@@ -547,23 +491,23 @@ class CreateChangeHabitWindow():
         user.
         It also calls the InputMessageWindow to feedback the user the state.
         Lastly it uses the click_close method to close the window.
-        '''
+        """
         function_status_messages = modify_existing_object_in_db(
             session=self.session,
             original_object=self.habit_object,
             name=self.name_entry.get(),
             description=self.description_entry.get("1.0", tk.END).strip(),
             period=self.convert_period_to_integer(),
-            active_status=self.active_checkbox_status.get()
+            active_status=self.active_checkbox_status.get(),
         )
 
         self.main_window.update_data_in_table()
         InputMessageWindow(function_status_messages)
-        self.click_close()
+        self.click_close_window()
 
     # convert_period_to_integer
     def convert_period_to_integer(self):
-        '''
+        """
         Method to convert the string from period into the needed integer.
 
         ----- Description -----
@@ -572,7 +516,7 @@ class CreateChangeHabitWindow():
 
         ----- Returns - onyl if not empty -----
         period (int):   Returns the needed integer to calculate the due dates.
-        '''
+        """
         period = self.period_variable.get()
         if period == self.period_option_lst[0]:
             period = int(1)
