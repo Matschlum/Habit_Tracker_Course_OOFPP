@@ -117,6 +117,8 @@ def manage_tracking_status(session, names):
             streak_calculator(session=session, habit_object=habit_entry)
         elif habit_entry.habit_active_status is False:
             function_status_message.append(200)
+        elif habit_entry.habit_tracking_status is True:
+            function_status_message.append(201)
     if function_status_message != []:
         return function_status_message
     else:

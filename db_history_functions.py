@@ -33,7 +33,6 @@ def create_new_history_entry(session, habit_object):
     )
     session.add(history_entry)
     session.commit()
-    print("History entry created // create_new_history_entry / db_history_functions")
 
 # delete_history_entries
 def delete_history_entries(session, habit_object):

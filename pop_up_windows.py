@@ -167,6 +167,7 @@ class InputMessageWindow():
                   "contain boolean."),
             122: "ERROR: Standad lists have different length.",
             200: "ERROR: Habit tracking status cannot be changed, habit marked as inactive.",
+            201: "WARNING: Habit already markes as complete for this due date",
             301: "Name of habit changed.",
             302: "Description of habit changed.",
             303: "Periodicity of habit changed.",

@@ -80,7 +80,7 @@ if __name__ == "__main__":
         0,
         lambda: loop_for_update_due_date(
             session=session,
-            root=app.main_root
+            main_window=app
         )
     )
     app.main_root.mainloop()

@@ -52,7 +52,7 @@ from db_history_functions import (
 
 
 # loop_for_update_due_date
-def loop_for_update_due_date(session, root):
+def loop_for_update_due_date(session, main_window):
     '''
     Loop function to check the status of the habits.
 
@@ -75,10 +75,11 @@ def loop_for_update_due_date(session, root):
     None
     '''
     check_due_date(session=session)
-    timer_in_milliseconds = 300000
-    root.after(timer_in_milliseconds, lambda: loop_for_update_due_date(
+    main_window.update_data_in_table()
+    timer_in_milliseconds = 300000  # 5min
+    main_window.main_root.after(timer_in_milliseconds, lambda: loop_for_update_due_date(
         session=session,
-        root=root
+        main_window=main_window
         ))
 
 
