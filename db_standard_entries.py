@@ -1,15 +1,11 @@
-'''
+"""
 Used as a basis for the standard habits
 
-----------------------------------------
-Description
-
+----- Description -----
 This module contains all information to create standard
 entries for the database in form of lists.
 
-----------------------------------------
-Note
-
+----- Note -----
 Habits can be created within the application itself.
 If additional standard values are needed please follow
 these rules:
@@ -31,7 +27,7 @@ these rules:
     daily, evey other day or weekly).
     The filters in the application will handle 1, 2, 7 as
     values. So it is highly recommended to only use these.
-'''
+"""
 
 # Standard Habit Names
 standard_habit_name = [
@@ -42,8 +38,8 @@ standard_habit_name = [
     "Standard Habit 5",
     "Standard Habit 6",
     "Standard Habit 7",
-    "Standard Habit 8"
-    ]
+    "Standard Habit 8",
+]
 
 # Standard Description
 standard_habit_description = [
@@ -54,8 +50,8 @@ standard_habit_description = [
     "Standard Description 5",
     "Standard Description 6",
     "Standard Description 7",
-    "Standard Description 8"
-    ]
+    "Standard Description 8",
+]
 
 # Standard Period
 standard_habit_period = [
@@ -66,8 +62,8 @@ standard_habit_period = [
     2,
     2,
     7,
-    7
-    ]
+    7,
+]
 
 # Standard Active Status
 standard_habit_active_status = [
@@ -78,6 +74,5 @@ standard_habit_active_status = [
     False,
     False,
     True,
-    False
-    ]
-
+    False,
+]

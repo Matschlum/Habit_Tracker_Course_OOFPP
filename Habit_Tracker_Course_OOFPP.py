@@ -89,9 +89,23 @@ create_new_change_habit_window.py
 db_filter_functions.py
 db_functions.py
 db_history_functions.py
-
 db_object_functions
---> second region must be done!!!
+db_setup.py
+db_standard_entries.py
+
+
+
+
+Open
+
+habit_classes.py  -> second class must be done and checks with mypy etc.
+habit_history_wondow.py
+main.py
+main_window.py
+update_loop.py
+
+error_code.md
+README.md
 
 """
 

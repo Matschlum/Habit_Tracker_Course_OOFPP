@@ -1,15 +1,15 @@
-''' Creates the Habit class and HabitHistory class
+'''
+This module contains the two classes for habits.
 
------
-Description
+----- Description -----
+This module contains the two classes describing the habits and its history.
 
-tbd
+----- Classes -----
+Habit:          This class is a representation of a habit.
+HabitHistory:   This class is a representation of the history behind a habit.
 
------
-Classes
-Habit
-HabitHistory
-
+----- Note -----
+Both classes have the BaseClass as a parent.
 '''
 
 # ----------------------------------------
@@ -18,49 +18,52 @@ HabitHistory
 
 # Standard library imports
 import datetime
+
 # Related third party imports
-from sqlalchemy import (
-   Column as sqla_Column,
-   String as sqla_String,
-    Integer as sqla_Integer,
-    Boolean as sqla_Boolean,
-    Date as sqla_Date,
-    DateTime as sqla_DateTime,
-    ForeignKey as sqla_ForeignKey
-)
+from sqlalchemy import Boolean as sqla_Boolean
+from sqlalchemy import Column as sqla_Column
+from sqlalchemy import Date as sqla_Date
+from sqlalchemy import DateTime as sqla_DateTime
+from sqlalchemy import ForeignKey as sqla_ForeignKey
+from sqlalchemy import Integer as sqla_Integer
+from sqlalchemy import String as sqla_String
+
 # Import from other modules
-from db_setup import (
-    BaseClass
-)
+from db_setup import BaseClass
+
 # endregion
 
 # ----------------------------------------
 # Classes
-# ----------------------------------------
+# region ----------------------------------------
 
 # Class Habit
 class Habit(BaseClass):
     '''
-    tbd
+    This class is a representation of a habit.
 
-    -----
-    Description
-    
-    tbd
+    ----- Description -----
+    This class describes all characteristics of a habit.
 
-    -----
-    Arguments
-   
-    tbd
-
-    -----
-    Methods
-    None
+    ----- Attributes -----
+    habit_name (str):               Represents the name of the habit, must be unique.
+    habit_description (str):        Describing the habit in more detail.
+    habit_period (int):             Representing the periodicity of the habit.
+    habit_active_status (bool):     Showing if a habit is activly tracked or not.
+    habit_tracking_status (bool):   Showing if a habit is completed within its time.
+    habit_creation_date (date):     Containing the date when the habit has been created.
+    habit_start_date (date):        Showing the start date, when the habit has been set to active.
+    habit_current_streak (int):     Showing the current streak of completed in time.
+    habit_highscore_streak (int):   Showing the highest streak reached for the active habit.
+    habit_total_fails (int):        Counting the total fails to complete in time.
+    habit_next_due (date):          Showing until when the habit has to be completed.
     '''
 
     __tablename__ = "habit"
 
-    # Defining the columns of the habit table
+    # ----------------------------------------
+    # Defining each column in the habit table.
+    # region ----------------------------------------
     habit_name = sqla_Column(
         "habit_name",
         sqla_String,
@@ -107,6 +110,8 @@ class Habit(BaseClass):
         sqla_Date
     )
 
+    # endregion
+
     # Constructor
     def __init__(
         self,
@@ -116,8 +121,13 @@ class Habit(BaseClass):
         habit_active_status
     ):
         '''
-        tbd
+        Initialize a new habit object.
 
+        ----- Arguments -----
+        habit_name (str):               Represents the name of the habit, must be unique.
+        habit_description (str):        Describing the habit in more detail.
+        habit_period (int):             Representing the periodicity of the habit.
+        habit_active_status (bool):     Showing if a habit is activly tracked or not.
         '''
         self.habit_name = habit_name
         self.habit_description = habit_description
@@ -198,3 +208,5 @@ class HabitHistory(BaseClass):
         self.fail_or_completion_date_time = fail_or_completion_date_time
         self.corresponding_due_date = corresponding_due_date
         self.type_of_completion = type_of_completion
+
+# endregion

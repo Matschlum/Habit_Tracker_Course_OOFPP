@@ -12,6 +12,7 @@ MainWindow
 '''
 
 # Standard library imports
+import sys
 import tkinter as tk
 from tkinter import ttk
 # Related third party imports
@@ -308,6 +309,7 @@ class MainWindow():
 
         '''
         self.main_root.destroy()
+        sys.exit()
 
     # click_show_highscore
     def click_show_highscore(self):
