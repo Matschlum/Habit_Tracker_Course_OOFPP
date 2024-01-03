@@ -23,7 +23,7 @@ modify_existing_object_in_db:   After modifing some values of an existing
 # region ----------------------------------------
 
 # Standard library imports
-
+from typing import Union
 # Related third party imports
 
 # Import from other modules
@@ -38,7 +38,6 @@ from habit_classes import Habit
 # Functions
 # region ----------------------------------------
 
-
 # add_standard_habits_to_db
 def add_standard_habits_to_db(
     session,
@@ -46,7 +45,7 @@ def add_standard_habits_to_db(
     standard_description: list[str],
     standard_period: list[int],
     standard_active_status: list[bool],
-) -> list[int]:
+) -> Union[int, list]:
     """
     This function adds several habits to the database.
 

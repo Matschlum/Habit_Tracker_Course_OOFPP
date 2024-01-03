@@ -177,7 +177,7 @@ class InputMessageWindow():
             403: "No periodicity changed.",
             404: "No status for active chagned."
             }
-        if message_codes is not None:
+        if message_codes:
             self.input_message_root = tk.Tk()
             self.input_message_root.geometry("480x280")
             self.input_message_root.title("Information - Habit Tracker")

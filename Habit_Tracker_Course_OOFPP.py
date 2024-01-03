@@ -1,11 +1,5 @@
 """
 
-Styling guidlines:
-Copy for doc strings:
-----------------------------------------
-Description
-----------------------------------------
-
 Copy for regions:
 # ----------------------------------------
 # Imports
@@ -93,6 +87,11 @@ This string is exactly 79 signs long
 Ready:
 create_new_change_habit_window.py
 db_filter_functions.py
+db_functions.py
+db_history_functions.py
+
+db_object_functions
+--> second region must be done!!!
 
 """
 
