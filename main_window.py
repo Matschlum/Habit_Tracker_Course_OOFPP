@@ -85,7 +85,7 @@ class MainWindow:
         """
         Constructor for the CreateChangeHabitWindow class.
 
-        ----- Arguments - onyl if not empty -----
+        ----- Arguments -----
         session (Session):  Containing the reference to the database session.
         """
         # ----------------------------------------
@@ -345,7 +345,7 @@ class MainWindow:
          filter.
          Calls the function to update the table.
 
-        ----- Arguments - onyl if not empty -----
+        ----- Arguments -----
         period (int):   Setting the period filter to this value.
         """
         self.habit_period_filter = period

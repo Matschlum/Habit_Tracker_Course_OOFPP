@@ -96,12 +96,11 @@ habit_classes.py
 habit_history_wondow.py
 main.py
 main_window.py
-
+update_loop.py
 
 Open
 
 pop_up_windows.py
-update_loop.py
 
 error_code.md
 README.md
