@@ -7,7 +7,7 @@ This application consists out of different .py-files to run the application, a u
 ### Python Version
 This application is written with Python Version 3.11.  
 ### Libraries
-Build-in libraries used:  
+Build-in libraries used:
 * datetime
 * os
 * sys
@@ -21,7 +21,7 @@ Third party imports
 ### Comments
 This application is written under the premise to use comments rarely.  
 Main purpose of the comments is to structure the code, to make it more readable.  
-Note that each function and class have its name as a comment just above the definition. This is because Visual Studio 2022 has been used to write this application. VS allows the user to collapse classes and functions to make it easier to navigate within one module. However collapsing a function means that you only can read ìdef Öî (or in case of a class ìclass Öî), without VS showing you the name.  
+Note that each function and class have its name as a comment just above the definition. This is because Visual Studio 2022 has been used to write this application. VS allows the user to collapse classes and functions to make it easier to navigate within one module. However collapsing a function means that you only can read ‚Äúdef ‚Ä¶‚Äù (or in case of a class ‚Äúclass ‚Ä¶‚Äù), without VS showing you the name.  
 ## Module / file overview
 Required modules/files:  
 * create_new_change_habit_window	Class to create new habits / change existing ones (GUI)
