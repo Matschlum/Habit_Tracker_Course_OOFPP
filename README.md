@@ -100,7 +100,7 @@ To remove standard habits completlty:
   
 To remove the request if you want to add standard habits:  
 1. Open main.py
-2. Delete the lines in the region   Adding standard habits.:
+2. Delete the lines in the region   Adding standard habits.:  
     input_for_standard_habits = input(  
         "If you want to add the standard values type: yes\n"  
     )  
@@ -109,8 +109,8 @@ Adding a new choice for the periodicity:
 1. Open create_new_change_habit_window.py
 2. Go to the region:        Defining the basic attributes for entry fields, buttons and methods.
 3. Add the name of your new periodicity to the list:    self.period_option_lst
-4. Create a new elif statement (C&P a statement above) and enter your numbers.
-   Example: "Every other week" / 14:
+4. Create a new elif statement (C&P a statement above) and enter your numbers.  
+   Example: "Every other week" / 14:  
         elif self.habit_object.habit_period == 14:  
             self.period_variable.set(self.period_option_lst[3])  
 5. Go to the function:      convert_period_to_integer
@@ -119,7 +119,7 @@ Adding a new choice for the periodicity:
 Adding the filter option:  
 1. Open main_window.py
 2. Go to the region:        Creating all widgets for the subframe_top_buttons
-3. Add a new button for the filter (C&P an existing one and rename it).
+3. Add a new button for the filter (C&P an existing one and rename it).  
    For the command-function lambda: self.click_show_period(7) pass the number you want.  
    Example: "Every other week" -> lambda: self.click_show_period(14)  
 4. Go to the region:        Place the widgets into the frames.
