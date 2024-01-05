@@ -28,8 +28,8 @@ from db_standard_entries import (
     standard_habit_period,
 )
 from main_window import MainWindow
+from pop_up_windows import InputMessageWindow
 from update_loop import loop_for_update_due_date
-
 # endregion
 
 # ----------------------------------------
@@ -55,6 +55,7 @@ if __name__ == "__main__":
             standard_habit_period,
             standard_habit_active_status,
         )
+        InputMessageWindow(message_codes=status_add_standard_habits)
 
     # endregion
 

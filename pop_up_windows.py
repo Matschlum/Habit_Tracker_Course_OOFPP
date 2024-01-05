@@ -193,13 +193,14 @@ class InputMessageWindow:
                 "No data added."
             ),
             113: "ERROR: Periodicity was not of type integer. No data added.",
-            114: "ERROR: Name cannot be empty. No data added.",
+            114: "ERROR: Name cannot be None or empty.",
             120: "ERROR: Standard Periodicty does not only contain integers.",
             121: (
                 "ERROR: Standard status for active does not only ",
                 "contain boolean."
             ),
             122: "ERROR: Standad lists have different length.",
+            123: "ERROR: Not all inputs are lists.",
             200: (
                 "ERROR: Habit tracking status cannot be changed,",
                 " habit marked as inactive."
@@ -209,10 +210,13 @@ class InputMessageWindow:
             302: "Description of habit changed.",
             303: "Periodicity of habit changed.",
             304: "Status for active of habit changed.",
-            401: "No name changed.",
-            402: "No description changed.",
-            403: "No periodicity changed.",
-            404: "No status for active chagned.",
+            401: "WARNING: No name changed.",
+            402: "WARNING: No description changed.",
+            403: "WARNING: No periodicity changed.",
+            404: "WARNING: No status for active chagned.",
+            411: "WARNING: Description is None. Set to default.",
+            412: "WARNING: Periodicity is None or empty. Set to default 1.",
+            413: "WARNING: Active Status is None or empty. Set to default False.",
         }
 
         if message_codes:
@@ -221,14 +225,6 @@ class InputMessageWindow:
             self.input_message_root.title("Information - Habit Tracker")
             self.input_message_frame = tk.Frame(self.input_message_root)
             self.input_message_frame.pack(fill="both", expand=True)
-
-            for code in message_codes:
-                message_text = messages.get(
-                    code, f"Unknown error: Code {code}"
-                )
-                label = tk.Label(self.input_message_frame, text=message_text)
-                label.pack(anchor="w", padx=10, pady=10)
-
             self.ok_button = tk.Button(
                 self.input_message_frame,
                 text="Ok",
@@ -236,6 +232,13 @@ class InputMessageWindow:
                 width=15,
             )
             self.ok_button.pack(padx=10, pady=10)
+            for code in message_codes:
+                message_text = messages.get(
+                    code, f"Unknown error: Code {code}"
+                )
+                label = tk.Label(self.input_message_frame, text=message_text)
+                label.pack(anchor="w", padx=10, pady=10)
+
 
     # click_ok
     def click_close_window(self):

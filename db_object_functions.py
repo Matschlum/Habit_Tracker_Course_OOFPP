@@ -14,28 +14,23 @@ region.
 from region 1 (indirect):
 change_active_passiv_status:    This function is used to switch the status of a
                                 habit from being tracked to not or vice versa.
-
 manage_active_passiv_status:    In this function the status of the habit
                                 (tracked/not tracked) is used to decide how to
                                 proceed with it
-
 manage_passiv_habits:           This function is used to call the reset
                                 functions for a passive habit.
-
+manage_tracking_status:         This function manages the tracking status for a
+                                list of habit names. 
 from region 2 (object):
 switch_active_passiv_status:    This function switches the status between being
                                 activly tracked or just passive.
-
 setup_active_habits:            This function sets the start date and the next
                                 due date for active habits, when activated.
-
 reset-functions:                The set of reset functions is used to reset a
                                 specific value back to the standard, like the
                                 current streaks to zero.
-
 set_tracking_status_to_true:    The function is used to set the tracking status
                                 to the value True.
-
 streak_calculator:              This function is used to calculate the current
                                 and highscore streak and adjusts the values of
                                 the object.

@@ -45,7 +45,7 @@ def add_standard_habits_to_db(
     standard_description: list[str],
     standard_period: list[int],
     standard_active_status: list[bool],
-) -> Union[int, list]:
+) -> list[int]:
     """
     This function adds several habits to the database.
 
@@ -78,15 +78,28 @@ def add_standard_habits_to_db(
     """
 
     # Validation of the input lists to ensure correct object creation.
+    function_status_message = []
+
+    arg_list = [
+        standard_name,
+        standard_description,
+        standard_period,
+        standard_active_status
+    ]
+    for arg in arg_list:
+        if type(arg) != list:
+            function_status_message.append(123)
+            return function_status_message
+
     if not all(isinstance(period, int) for period in standard_period):
-        function_status_message = 120
+        function_status_message.append(120)
         return function_status_message
 
     if not all(
         isinstance(active_status, bool)
         for active_status in standard_active_status
     ):
-        function_status_message = 121
+        function_status_message.append(121)
         return function_status_message
 
     if not all(
@@ -98,7 +111,7 @@ def add_standard_habits_to_db(
             standard_active_status,
         ]
     ):
-        function_status_message = 122
+        function_status_message.append(122)
         return function_status_message
 
     # Using the input lists to create new habit objects.
@@ -111,8 +124,8 @@ def add_standard_habits_to_db(
         message_handler = add_new_entry_to_db(
             session, name, description, period, active_status
         )
-        function_status_message_adding_entries.append(
-            (counter, message_handler)
+        function_status_message_adding_entries.extend(
+            message_handler
         )
     return function_status_message_adding_entries
 
@@ -146,7 +159,7 @@ def add_new_entry_to_db(
         function_status_message.append(113)
     if not isinstance(active_status, bool):
         function_status_message.append(112)
-    if name is (None or ""):
+    if name is None or name == "":
         function_status_message.append(114)
 
     if function_status_message:
@@ -172,6 +185,7 @@ def add_new_entry_to_db(
     else:
         function_status_message.append(1)
     return function_status_message
+
 
 # delete_entries_from_db
 def delete_entries_from_db(session, habit_names: list[str]):
@@ -226,8 +240,20 @@ def modify_existing_object_in_db(
     function_status_messages (list):    Returning a list of values representing
                                         error/warning codes.
     """
-
     function_status_messages = []
+    if name is None or name == "":
+        function_status_messages.append(114)
+        return function_status_messages
+    if description is None:
+        function_status_messages.append(411)
+        description="default"
+    if period is None or period == "":
+        function_status_messages.append(412)
+        period = 1
+    if active_status is None or active_status == "":
+        function_status_messages.append(413)
+        active_status = False
+
     if original_object.habit_name != name:
         check_name = session.query(Habit).filter_by(habit_name=name).first()
         if check_name is None:

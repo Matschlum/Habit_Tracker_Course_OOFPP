@@ -99,17 +99,15 @@ main_window.py
 update_loop.py
 pop_up_windows.py
 
+
+
 Adjust:
-
 error_code.md
-README.md
+README.md -> only check in github
 
-Add:
-unittest for 
-db_functions.py
-db_history_functions.py
-db_object_functions.py
-db_filter_functions.py
+Missing unittest for:
+filter_for_history_entries
+filter_db
 
 Add: 
 Script to add data to the database -> use existing functions.
