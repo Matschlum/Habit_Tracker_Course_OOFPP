@@ -20,11 +20,11 @@ manage_active_passiv_status:    In this function the status of the habit
                                 proceed with it
 
 manage_passiv_habits:           This function is used to call the reset
-                                functions for a passiv habit.
+                                functions for a passive habit.
 
 from region 2 (object):
 switch_active_passiv_status:    This function switches the status between being
-                                activly tracked or just passiv.
+                                activly tracked or just passive.
 
 setup_active_habits:            This function sets the start date and the next
                                 due date for active habits, when activated.
@@ -63,12 +63,12 @@ from db_history_functions import create_new_history_entry
 # change_active_passiv_status
 def change_active_passiv_status(session, names: list[str]):
     """
-    This function starts the process of changing a habit from active to passiv
+    This function starts the process of changing a habit from active to passive
     or vice versa.
 
     ----- Description -----
     This function calls the needed functions to change the status of a habit
-    from active to passiv or vice versa.
+    from active to passive or vice versa.
     The process consists of three steps:
     1. Get the related habit objects from the list of input names.
     2. Call the actual switch function.
@@ -92,7 +92,7 @@ def change_active_passiv_status(session, names: list[str]):
 def manage_active_passiv_status(session, habit_object):
     """
     This function manages habits according to their status of being active or
-    passiv.
+    passive.
 
     ----- Description -----
     This function takes a habit object as input and calls functions depending
@@ -112,7 +112,7 @@ def manage_active_passiv_status(session, habit_object):
 # manage_passiv_habits
 def manage_passiv_habits(session, habit_object):
     """
-    This function calls the needed reset functions for passiv habits.
+    This function calls the needed reset functions for passive habits.
 
     ----- Description -----
     This function will reset several things for an inactive habit. E.g. the

@@ -133,7 +133,7 @@ def add_new_entry_to_db(
     name (str):             This will be added as the name of the habit.
     description (str):      This will be added as the description of the habit.
     period (int):           This will be added as the periodicity of the habit.
-    active_status (bool):   This will used as the mark for being active/passiv.
+    active_status (bool):   This will used as the mark for being active/passive.
 
     ----- Returns -----
     function_status_message (list): Returning a list of values representing
@@ -220,7 +220,7 @@ def modify_existing_object_in_db(
     description (str):          Containing the new description.
     period (int):               Containing the new periodicitiy.
     active_status (bool):       Containing the new mark for being
-                                active/passiv.
+                                active/passive.
 
     ----- Returns -----
     function_status_messages (list):    Returning a list of values representing

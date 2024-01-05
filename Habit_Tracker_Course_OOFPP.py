@@ -97,25 +97,21 @@ habit_history_wondow.py
 main.py
 main_window.py
 update_loop.py
-
-Open
-
 pop_up_windows.py
+
+Adjust:
 
 error_code.md
 README.md
 
-"""
+Add:
+unittest for 
+db_functions.py
+db_history_functions.py
+db_object_functions.py
+db_filter_functions.py
 
-"""
-
-Scripts that help:
-
-1. isort ...
-2. write comments and format
-2/5. mypy ...
-3. black ...
-4. pylint ...
-5. pycodestyle ...
+Add: 
+Script to add data to the database -> use existing functions.
 
 """

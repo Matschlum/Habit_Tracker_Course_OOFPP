@@ -37,9 +37,12 @@ from update_loop import loop_for_update_due_date
 # region ----------------------------------------
 
 if __name__ == "__main__":
-    # Sets up the dababase and creates a session to it.
     engine = start_db(log=False)
     session = start_db_session(engine=engine)
+
+    # ----------------------------------------
+    # Adding standard habits.
+    # region ----------------------------------------
 
     input_for_standard_habits = input(
         "If you want to add the standard values type: yes\n"
@@ -53,8 +56,8 @@ if __name__ == "__main__":
             standard_habit_active_status,
         )
 
-    # Creating an instance of the MainWindow (GUI) to interact with the
-    # application.
+    # endregion
+
     app = MainWindow(session=session)
     app.main_root.after(
         0, lambda: loop_for_update_due_date(session=session, main_window=app)

@@ -97,6 +97,9 @@ class MainWindow:
         self.main_root.geometry("950x400")
         self.main_root.title("Habit Tracker")
         self.main_root.grid_columnconfigure(0, weight=1)
+        self.main_root.wm_protocol(
+            "WM_DELETE_WINDOW", self.click_close_application
+        )
 
         self.main_frame = tk.Frame(self.main_root)
         self.main_frame.grid(sticky="nsew")

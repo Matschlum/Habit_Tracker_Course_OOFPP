@@ -21,6 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="add_sample_data.py" />
     <Compile Include="create_new_change_habit_window.py" />
     <Compile Include="db_filter_functions.py" />
     <Compile Include="db_functions.py" />
@@ -28,6 +29,7 @@
     <Compile Include="db_object_functions.py" />
     <Compile Include="db_setup.py" />
     <Compile Include="db_standard_entries.py" />
+    <Compile Include="function_testing.py" />
     <Compile Include="habit_classes.py" />
     <Compile Include="Habit_Tracker_Course_OOFPP.py" />
     <Compile Include="main.py" />

@@ -16,6 +16,8 @@ window based on Tkinter.
 # Standard library imports
 import tkinter as tk
 
+# Related third party imports
+
 # Import from other modules
 from db_functions import add_new_entry_to_db, modify_existing_object_in_db
 from pop_up_windows import InputMessageWindow
