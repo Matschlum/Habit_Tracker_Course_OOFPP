@@ -54,6 +54,7 @@ def add_sample_data_to_habits(session, data_lst):
         habit_object.habit_highscore_streak = highscore
         habit_object.habit_total_fails = total_fails
         habit_object.habit_next_due = next_due
+    session.commit()
 
 
 
