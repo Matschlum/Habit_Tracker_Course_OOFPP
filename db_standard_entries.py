@@ -31,48 +31,36 @@ these rules:
 
 # Standard Habit Names
 standard_habit_name = [
-    "Standard Habit 1",
-    "Standard Habit 2",
-    "Standard Habit 3",
-    "Standard Habit 4",
-    "Standard Habit 5",
-    "Standard Habit 6",
-    "Standard Habit 7",
-    "Standard Habit 8",
+    "Clean Apartment",
+    "Do Sports",
+    "Code in Python",
+    "Learn Spanish",
+    "Water plants",
 ]
 
 # Standard Description
 standard_habit_description = [
-    "Standard Description 1",
-    "Standard Description 2",
-    "Standard Description 3",
-    "Standard Description 4",
-    "Standard Description 5",
-    "Standard Description 6",
-    "Standard Description 7",
-    "Standard Description 8",
+    "Clean everything",
+    "Go to training",
+    "Work on Python skills",
+    "Spanish classes or hw",
+    "Water plants",
 ]
 
 # Standard Period
 standard_habit_period = [
-    1,
-    1,
-    1,
-    2,
-    2,
-    2,
     7,
+    2,
+    1,
+    2,
     7,
 ]
 
 # Standard Active Status
 standard_habit_active_status = [
     True,
-    True,
     False,
     True,
-    False,
-    False,
     True,
-    False,
+    True,
 ]

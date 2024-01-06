@@ -124,7 +124,7 @@ Adding the filter option:
    Example: "Every other week" -> lambda: self.click_show_period(14)  
 4. Go to the region:        Place the widgets into the frames.
 5. Add your new button to the list second_row_widgets.
-  
+6. Adjust the filter function filter_db accordingly by adding the new values to the if statement.  
 Note: Adding new filters to the main window may has a negative impact on the layout. Adjust it accordingly.  
   
 Changing the system to a free of choice:  
@@ -132,6 +132,7 @@ Have a look at the habit_history_window.py file and try to understand how it wor
 This can be rebuild in the same manner in the main_window.  
 The create_new_change_habit_window.py then has to be adjusted as well.  
 The entry incl. its validation should replace the list of choices.  
+The filter function filter_db should be adjusted accordingly to the filter_for_history_entries.  
 Note: It is not recommended to do this if you did not understand how it works in the habit_history_window.py  
 ## Styling guidelines
 The style of this code tries to follow the suggestions made by  
