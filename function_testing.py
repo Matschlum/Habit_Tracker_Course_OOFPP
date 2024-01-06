@@ -3,14 +3,14 @@ This module is used to test the main database functions using unittest.
 
 ----- tested Functions -----
 From module db_functions:
-add_standard_habits_to_db           # done
-add_new_entry_to_db                 # done
-modify_existing_object_in_db        # done
+add_standard_habits_to_db
+add_new_entry_to_db
+modify_existing_object_in_db
 
 From module db_object_functions:
-manage_tracking_status              # done
-setup_active_habits                 # done
-streak_calculator                   # done
+manage_tracking_status
+setup_active_habits
+streak_calculator
 
 From module db_filter_functions:
 filter_habits
@@ -58,6 +58,7 @@ from db_history_functions import *
 # Test module db_functions.
 # region ----------------------------------------
 
+
 # TestAddNewEntryToDb
 class TestAddNewEntryToDb(unittest.TestCase):
     def setUp(self):
@@ -69,10 +70,12 @@ class TestAddNewEntryToDb(unittest.TestCase):
         description = str("Test Description")
         period = int(17)
         active_status = True
-        
+
         # Setting the search for check_name in the function to None to simulate that there is none such entry.
         self.session.query.return_value.filter_by.return_value.first.return_value = None
-        return_value = add_new_entry_to_db(self.session, name, description, period, active_status)
+        return_value = add_new_entry_to_db(
+            self.session, name, description, period, active_status
+        )
         self.assertEqual(return_value, [0])
 
     def test_integer_for_description_and_name(self):
@@ -80,10 +83,12 @@ class TestAddNewEntryToDb(unittest.TestCase):
         description = int(17)
         period = int(5)
         active_status = True
-        
+
         # Setting the search for check_name in the function to None to simulate that there is none such entry.
         self.session.query.return_value.filter_by.return_value.first.return_value = None
-        return_value = add_new_entry_to_db(self.session, name, description, period, active_status)
+        return_value = add_new_entry_to_db(
+            self.session, name, description, period, active_status
+        )
         self.assertEqual(return_value, [100, 101, 0])
 
     def test_all_integer_input(self):
@@ -91,21 +96,25 @@ class TestAddNewEntryToDb(unittest.TestCase):
         description = int(17)
         period = int(5)
         active_status = int(17)
-        
+
         # Setting the search for check_name in the function to None to simulate that there is no such entry.
         self.session.query.return_value.filter_by.return_value.first.return_value = None
-        return_value = add_new_entry_to_db(self.session, name, description, period, active_status)
+        return_value = add_new_entry_to_db(
+            self.session, name, description, period, active_status
+        )
         self.assertEqual(return_value, [112])
-    
+
     def test_all_string_input(self):
         name = str("Test")
         description = str("Test")
         period = str("Test")
         active_status = str("Test")
-        
+
         # Setting the search for check_name in the function to None to simulate that there is no such entry.
         self.session.query.return_value.filter_by.return_value.first.return_value = None
-        return_value = add_new_entry_to_db(self.session, name, description, period, active_status)
+        return_value = add_new_entry_to_db(
+            self.session, name, description, period, active_status
+        )
         self.assertEqual(return_value, [113, 112])
 
     def test_all_empty(self):
@@ -113,10 +122,12 @@ class TestAddNewEntryToDb(unittest.TestCase):
         description = ""
         period = ""
         active_status = ""
-        
+
         # Setting the search for check_name in the function to None to simulate that there is no such entry.
         self.session.query.return_value.filter_by.return_value.first.return_value = None
-        return_value = add_new_entry_to_db(self.session, name, description, period, active_status)
+        return_value = add_new_entry_to_db(
+            self.session, name, description, period, active_status
+        )
         self.assertEqual(return_value, [113, 112, 114])
 
     def test_all_None(self):
@@ -124,11 +135,14 @@ class TestAddNewEntryToDb(unittest.TestCase):
         description = None
         period = None
         active_status = None
-        
+
         # Setting the search for check_name in the function to None to simulate that there is no such entry.
         self.session.query.return_value.filter_by.return_value.first.return_value = None
-        return_value = add_new_entry_to_db(self.session, name, description, period, active_status)
+        return_value = add_new_entry_to_db(
+            self.session, name, description, period, active_status
+        )
         self.assertEqual(return_value, [113, 112, 114])
+
 
 # TestAddStandardHabitsToDb
 class TestAddStandardHabitsToDb(unittest.TestCase):
@@ -141,16 +155,20 @@ class TestAddStandardHabitsToDb(unittest.TestCase):
         period = 17
         active_status = True
 
-        return_value = add_standard_habits_to_db(self.session, name, description, period, active_status)
+        return_value = add_standard_habits_to_db(
+            self.session, name, description, period, active_status
+        )
         self.assertEqual(return_value, [123])
-    
+
     def test_different_length_of_input_values(self):
         name = ["Test 1", "Test 2", "Test 3"]
         description = ["Descrip 1", "Descrip 2"]
         period = [17, 18, 19, 20]
         active_status = [True]
 
-        return_value = add_standard_habits_to_db(self.session, name, description, period, active_status)
+        return_value = add_standard_habits_to_db(
+            self.session, name, description, period, active_status
+        )
         self.assertEqual(return_value, [122])
 
     def test_integers_in_list_for_names(self):
@@ -162,7 +180,9 @@ class TestAddStandardHabitsToDb(unittest.TestCase):
         # Return of 100: each passed name is an integer and gets converted to a string -> warning message
         # Return of 1: the check_name is not None - and therefore there is a habit with this name for the test
         # For proper tests of add_new_entry_to_db see class TestAddNewEntryToDb
-        return_value = add_standard_habits_to_db(self.session, name, description, period, active_status)
+        return_value = add_standard_habits_to_db(
+            self.session, name, description, period, active_status
+        )
         self.assertEqual(return_value, [100, 1, 100, 1, 100, 1])
 
     def test_working_input(self):
@@ -173,7 +193,9 @@ class TestAddStandardHabitsToDb(unittest.TestCase):
         # Expecting [1, 1, 1] because the function add_new_entry_to_db.
         # Return of 1: the check_name is not None - and therefore there is a habit with this name for the test
         # For proper tests of add_new_entry_to_db see class TestAddNewEntryToDb
-        return_value = add_standard_habits_to_db(self.session, name, description, period, active_status)
+        return_value = add_standard_habits_to_db(
+            self.session, name, description, period, active_status
+        )
         self.assertEqual(return_value, [1, 1, 1])
 
     def test_mixed_values_in_all_lists(self):
@@ -182,7 +204,9 @@ class TestAddStandardHabitsToDb(unittest.TestCase):
         period = [17, 18, "Test"]
         active_status = [True, "Test", True]
 
-        return_value = add_standard_habits_to_db(self.session, name, description, period, active_status)
+        return_value = add_standard_habits_to_db(
+            self.session, name, description, period, active_status
+        )
         self.assertEqual(return_value, [120])
 
     def test_empty_lists(self):
@@ -191,8 +215,11 @@ class TestAddStandardHabitsToDb(unittest.TestCase):
         period = []
         active_status = []
 
-        return_value = add_standard_habits_to_db(self.session, name, description, period, active_status)
+        return_value = add_standard_habits_to_db(
+            self.session, name, description, period, active_status
+        )
         self.assertEqual(return_value, [])
+
 
 # TestModifiyExistingObjectsInDb:
 class TestModifiyExistingObjectsInDb(unittest.TestCase):
@@ -211,7 +238,9 @@ class TestModifiyExistingObjectsInDb(unittest.TestCase):
         active_status = True
 
         self.session.query.return_value.filter_by.return_value.first.return_value = None
-        return_value = modify_existing_object_in_db(self.session, self.habit_object, name, description, period, active_status)
+        return_value = modify_existing_object_in_db(
+            self.session, self.habit_object, name, description, period, active_status
+        )
         self.assertEqual(return_value, [401, 402, 403, 404])
 
     def test_with_new_valid_input(self):
@@ -221,7 +250,9 @@ class TestModifiyExistingObjectsInDb(unittest.TestCase):
         active_status = False
 
         self.session.query.return_value.filter_by.return_value.first.return_value = None
-        return_value = modify_existing_object_in_db(self.session, self.habit_object, name, description, period, active_status)
+        return_value = modify_existing_object_in_db(
+            self.session, self.habit_object, name, description, period, active_status
+        )
         self.assertEqual(return_value, [301, 302, 303, 304])
 
     def test_with_None_inputs(self):
@@ -231,7 +262,9 @@ class TestModifiyExistingObjectsInDb(unittest.TestCase):
         active_status = None
 
         self.session.query.return_value.filter_by.return_value.first.return_value = None
-        return_value = modify_existing_object_in_db(self.session, self.habit_object, name, description, period, active_status)
+        return_value = modify_existing_object_in_db(
+            self.session, self.habit_object, name, description, period, active_status
+        )
         self.assertEqual(return_value, [114])
 
     def test_with_name_not_none_rest_none(self):
@@ -241,7 +274,9 @@ class TestModifiyExistingObjectsInDb(unittest.TestCase):
         active_status = None
 
         self.session.query.return_value.filter_by.return_value.first.return_value = None
-        return_value = modify_existing_object_in_db(self.session, self.habit_object, name, description, period, active_status)
+        return_value = modify_existing_object_in_db(
+            self.session, self.habit_object, name, description, period, active_status
+        )
         self.assertEqual(return_value, [411, 412, 413, 301, 302, 303, 304])
 
     def test_with_emtpy_str_inputs(self):
@@ -251,7 +286,9 @@ class TestModifiyExistingObjectsInDb(unittest.TestCase):
         active_status = ""
 
         self.session.query.return_value.filter_by.return_value.first.return_value = None
-        return_value = modify_existing_object_in_db(self.session, self.habit_object, name, description, period, active_status)
+        return_value = modify_existing_object_in_db(
+            self.session, self.habit_object, name, description, period, active_status
+        )
         self.assertEqual(return_value, [114])
 
     def test_with_emtpy_str_inputs_name_different(self):
@@ -261,13 +298,18 @@ class TestModifiyExistingObjectsInDb(unittest.TestCase):
         active_status = ""
 
         self.session.query.return_value.filter_by.return_value.first.return_value = None
-        return_value = modify_existing_object_in_db(self.session, self.habit_object, name, description, period, active_status)
+        return_value = modify_existing_object_in_db(
+            self.session, self.habit_object, name, description, period, active_status
+        )
         self.assertEqual(return_value, [412, 413, 301, 302, 303, 304])
+
+
 # endregion
 
 # ----------------------------------------
 # Test module db_object_functions.
 # region ----------------------------------------
+
 
 # TestManageTrackingStatus
 class TestManageTrackingStatus(unittest.TestCase):
@@ -279,7 +321,9 @@ class TestManageTrackingStatus(unittest.TestCase):
         # Creating a mock_habit (test object)
         mock_habit = MagicMock(habit_active_status=True, habit_tracking_status=True)
         # Making the filter_db_for_names function return the mock habit
-        self.session.query.return_value.filter.return_value.all.return_value = [mock_habit]
+        self.session.query.return_value.filter.return_value.all.return_value = [
+            mock_habit
+        ]
 
         return_value = manage_tracking_status(self.session, self.test_name_list)
         self.assertEqual(return_value, [201])
@@ -288,10 +332,13 @@ class TestManageTrackingStatus(unittest.TestCase):
         # Creating a mock_habit (test object)
         mock_habit = MagicMock(habit_active_status=False, habit_tracking_status=False)
         # Making the filter_db_for_names function return the mock habit
-        self.session.query.return_value.filter.return_value.all.return_value = [mock_habit]
+        self.session.query.return_value.filter.return_value.all.return_value = [
+            mock_habit
+        ]
 
         return_value = manage_tracking_status(self.session, self.test_name_list)
         self.assertEqual(return_value, [200])
+
 
 # TestSetupActiveHabits
 class TestSetupActiveHabits(unittest.TestCase):
@@ -306,7 +353,10 @@ class TestSetupActiveHabits(unittest.TestCase):
 
         setup_active_habits(self.session, self.habit_object)
         self.assertEqual(self.habit_object.habit_start_date, datetime.date.today())
-        self.assertEqual(self.habit_object.habit_next_due, datetime.date.today() + datetime.timedelta(days=17))
+        self.assertEqual(
+            self.habit_object.habit_next_due,
+            datetime.date.today() + datetime.timedelta(days=17),
+        )
 
     def test_for_start_date_only(self):
         self.habit_object.habit_start_date = datetime.date(2000, 1, 1)
@@ -315,7 +365,11 @@ class TestSetupActiveHabits(unittest.TestCase):
 
         setup_active_habits(self.session, self.habit_object)
         self.assertEqual(self.habit_object.habit_start_date, datetime.date(2000, 1, 1))
-        self.assertEqual(self.habit_object.habit_next_due, datetime.date(2000, 1, 1) + datetime.timedelta(days=17))
+        self.assertEqual(
+            self.habit_object.habit_next_due,
+            datetime.date(2000, 1, 1) + datetime.timedelta(days=17),
+        )
+
 
 # TestStreakCalculator
 class TestStreakCalculator(unittest.TestCase):
@@ -326,7 +380,7 @@ class TestStreakCalculator(unittest.TestCase):
     def test_streak_calculation_with_higher_highscore(self):
         self.habit_object.habit_current_streak = 17
         self.habit_object.habit_highscore_streak = 36
-        
+
         streak_calculator(self.session, self.habit_object)
         self.assertEqual(self.habit_object.habit_current_streak, 18)
         self.assertEqual(self.habit_object.habit_highscore_streak, 36)
@@ -347,10 +401,85 @@ class TestStreakCalculator(unittest.TestCase):
         self.assertEqual(self.habit_object.habit_current_streak, 37)
         self.assertEqual(self.habit_object.habit_highscore_streak, 37)
 
+
 # endregion
 
 # ----------------------------------------
 # Test module db_filter_functions
 # region ----------------------------------------
+
+
+# TestFilterHabits
+class TestFilterHabits(unittest.TestCase):
+    def setUp(self):
+        self.session = Mock()
+        self.habit_object_filtered = Mock()
+        self.habit_object_all = Mock()
+        self.session.query.return_value.filter.return_value.all.return_value = [
+            self.habit_object_filtered
+        ]
+        self.session.query.return_value.all.return_value = [self.habit_object_all]
+
+    def test_with_default_values(self):
+        period_filter = None
+        active_filter = 0
+
+        return_value = filter_habits(self.session, period_filter, active_filter)
+        self.assertEqual(return_value, [self.habit_object_filtered])
+
+    def test_with_two_standard_inputs(self):
+        period_filter = 2
+        active_filter = 1
+
+        return_value = filter_habits(self.session, period_filter, active_filter)
+        self.assertEqual(return_value, [self.habit_object_filtered])
+
+    def test_with_two_non_standard_inputs(self):
+        period_filter = 17
+        active_filter = 17
+
+        return_value = filter_habits(self.session, period_filter, active_filter)
+        self.assertEqual(return_value, [self.habit_object_all])
+
+    def test_with_wrong_type_input(self):
+        period_filter = "Test"
+        active_filter = "Test"
+
+        return_value = filter_habits(self.session, period_filter, active_filter)
+        self.assertEqual(return_value, [self.habit_object_all])
+
+
+# TestFilterForHistoryEntries
+class TestForHistoryEntries(unittest.TestCase):
+    def setUp(self):
+        self.session = Mock()
+        self.history_object_filtered = Mock()
+        self.history_object_all = Mock()
+        self.session.query.return_value.filter.return_value.all.return_value = [
+            self.history_object_filtered
+        ]
+        self.session.query.return_value.all.return_value = [self.history_object_all]
+
+    def test_with_None_inputs(self):
+        status_filter = None
+        timespan = None
+
+        return_value = filter_for_history_entries(self.session, status_filter, timespan)
+        self.assertEqual(return_value, [self.history_object_all])
+
+    def test_with_two_wrong_type_input(self):
+        status_filter = "Test"
+        timespan = "Test"
+
+        return_value = filter_for_history_entries(self.session, status_filter, timespan)
+        self.assertEqual(return_value, [self.history_object_all])
+
+    def test_with_two_valid_inputs(self):
+        status_filter = 1
+        timespan = 17
+
+        return_value = filter_for_history_entries(self.session, status_filter, timespan)
+        self.assertEqual(return_value, [self.history_object_filtered])
+
 
 # endregion

@@ -211,9 +211,8 @@ def filter_for_history_entries(
     table_content (list):   A list of history entries is returned.
     """
     if timespan is None:
-        if status_filter == 0:
-            table_content = session.query(HabitHistory).all()
-        elif status_filter == 1:
+
+        if status_filter == 1:
             table_content = (
                 session.query(HabitHistory)
                 .filter(HabitHistory.type_of_completion == True)
@@ -225,19 +224,13 @@ def filter_for_history_entries(
                 .filter(HabitHistory.type_of_completion == False)
                 .all()
             )
-    else:
+        else:
+            table_content = session.query(HabitHistory).all()
+    elif isinstance(timespan, int):
         reference_date = (
             datetime.date.today() - datetime.timedelta(days=timespan)
         )
-        if status_filter == 0:
-            table_content = (
-                session.query(HabitHistory)
-                .filter(
-                    HabitHistory.fail_or_completion_date_time >= reference_date
-                )
-                .all()
-            )
-        elif status_filter == 1:
+        if status_filter == 1:
             table_content = (
                 session.query(HabitHistory)
                 .filter(
@@ -261,6 +254,17 @@ def filter_for_history_entries(
                 )
                 .all()
             )
+        else:
+            table_content = (
+                session.query(HabitHistory)
+                .filter(
+                    HabitHistory.fail_or_completion_date_time >= reference_date
+                )
+                .all()
+            )
+    else:
+        table_content = session.query(HabitHistory).all()
+
     return table_content
 
 # endregion
