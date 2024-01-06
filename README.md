@@ -7,7 +7,7 @@ This application consists out of different .py-files to run the application, a u
 ### Python Version
 This application is written with Python Version 3.11.  
 ### Libraries
-Build-in libraries used:  
+Build-in libraries used:
 * datetime
 * os
 * sys
@@ -21,7 +21,7 @@ Third party imports
 ### Comments
 This application is written under the premise to use comments rarely.  
 Main purpose of the comments is to structure the code, to make it more readable.  
-Note that each function and class have its name as a comment just above the definition. This is because Visual Studio 2022 has been used to write this application. VS allows the user to collapse classes and functions to make it easier to navigate within one module. However collapsing a function means that you only can read “def …” (or in case of a class “class …”), without VS showing you the name.  
+Note that each function and class have its name as a comment just above the definition. This is because Visual Studio 2022 has been used to write this application. VS allows the user to collapse classes and functions to make it easier to navigate within one module. However collapsing a function means that you only can read â€œdef â€¦â€ (or in case of a class â€œclass â€¦â€), without VS showing you the name.  
 ## Module / file overview
 Required modules/files:  
 * create_new_change_habit_window	Class to create new habits / change existing ones (GUI)
@@ -100,7 +100,7 @@ To remove standard habits completlty:
   
 To remove the request if you want to add standard habits:  
 1. Open main.py
-2. Delete the lines in the region   Adding standard habits.:
+2. Delete the lines in the region   Adding standard habits.:  
     input_for_standard_habits = input(  
         "If you want to add the standard values type: yes\n"  
     )  
@@ -109,8 +109,8 @@ Adding a new choice for the periodicity:
 1. Open create_new_change_habit_window.py
 2. Go to the region:        Defining the basic attributes for entry fields, buttons and methods.
 3. Add the name of your new periodicity to the list:    self.period_option_lst
-4. Create a new elif statement (C&P a statement above) and enter your numbers.
-   Example: "Every other week" / 14:
+4. Create a new elif statement (C&P a statement above) and enter your numbers.  
+   Example: "Every other week" / 14:  
         elif self.habit_object.habit_period == 14:  
             self.period_variable.set(self.period_option_lst[3])  
 5. Go to the function:      convert_period_to_integer
@@ -119,7 +119,7 @@ Adding a new choice for the periodicity:
 Adding the filter option:  
 1. Open main_window.py
 2. Go to the region:        Creating all widgets for the subframe_top_buttons
-3. Add a new button for the filter (C&P an existing one and rename it).
+3. Add a new button for the filter (C&P an existing one and rename it).  
    For the command-function lambda: self.click_show_period(7) pass the number you want.  
    Example: "Every other week" -> lambda: self.click_show_period(14)  
 4. Go to the region:        Place the widgets into the frames.
