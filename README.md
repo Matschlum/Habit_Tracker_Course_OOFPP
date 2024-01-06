@@ -10,6 +10,7 @@ This application is written with Python Version 3.11.
 Build-in libraries used:
 * datetime
 * os
+* random (for add_sample_data only)
 * sys
 * tkinter
 * typing
@@ -73,6 +74,8 @@ Afterwards you can use the GUI.
 3. Use:		python add_sample_data.py
   
 Note: This will delete the all entries from the database and add the specified sample data.  
+The next due date in the sample data is set to 2099/12/01. The reson is that the data stays stable during the evaluation.  
+To work with the application, it is recommended to delete the data using the app and create own habits, or use the standard habits.  
 ## Problems to run the application
 * Check the version of Python - try to use 3.11
 * Check the version of SQLAlchemy - try to use version 2.0.23
