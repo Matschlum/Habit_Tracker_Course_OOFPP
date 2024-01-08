@@ -153,7 +153,7 @@ To comply with these guidelines, this code has been formatted using the followin
 * pycodestyle
 * mypy
   
-The function_testing and the add_sample_data are fully not formatted in that way.  
+The function_testing and the add_sample_data are not fully formatted in that way.  
 ## Final words
 Ok - I know. Passive is written passive with an e at the end. Sorry!!! It is a bit a mess.  
 There are probably other mistakes.  
