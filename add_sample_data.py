@@ -111,15 +111,6 @@ if __name__ == "__main__":
 
     habits = session.query(Habit).all()
 
-    # Data testing
-    print("Data in database:")
-    for habit in habits:
-        print(f"Name: {habit.habit_name} - Period {habit.habit_period} - Active: {habit.habit_active_status} - Track: {habit.habit_tracking_status}")
-        print(f"Cur St: {habit.habit_current_streak} - high: {habit.habit_highscore_streak} - fails: {habit.habit_total_fails}")
-        print(f"Create: {habit.habit_creation_date} - Start: {habit.habit_start_date} - Next: {habit.habit_next_due}")
-        print(f"Description: {habit.habit_description}")
-        print("-----")
-
     habit_1 = habits[0]
     habit_history_1 = [
         [
@@ -254,7 +245,7 @@ if __name__ == "__main__":
         ],  
         [
             habit_2.habit_name,
-            datetime.datetime(2023, 10, 18, rint(0, 23), rint(0, 59), rint(0, 59)),
+            datetime.datetime(2023, 10, 19, rint(0, 23), rint(0, 59), rint(0, 59)),
             habit_2.habit_start_date + datetime.timedelta(days=habit_2.habit_period * 18),
             False
         ],
@@ -266,7 +257,7 @@ if __name__ == "__main__":
         ],  
         [
             habit_2.habit_name,
-            datetime.datetime(2023, 10, 20, rint(0, 23), rint(0, 59), rint(0, 59)),
+            datetime.datetime(2023, 10, 21, rint(0, 23), rint(0, 59), rint(0, 59)),
             habit_2.habit_start_date + datetime.timedelta(days=habit_2.habit_period * 20),
             False
         ],
@@ -284,7 +275,7 @@ if __name__ == "__main__":
         ],
         [
             habit_2.habit_name,
-            datetime.datetime(2023, 10, 23, rint(0, 23), rint(0, 59), rint(0, 59)),
+            datetime.datetime(2023, 10, 24, rint(0, 23), rint(0, 59), rint(0, 59)),
             habit_2.habit_start_date + datetime.timedelta(days=habit_2.habit_period * 23),
             False
         ],  
@@ -296,7 +287,7 @@ if __name__ == "__main__":
         ],
         [
             habit_2.habit_name,
-            datetime.datetime(2023, 10, 25, rint(0, 23), rint(0, 59), rint(0, 59)),
+            datetime.datetime(2023, 10, 25, rint(0, 24), rint(0, 59), rint(0, 59)),
             habit_2.habit_start_date + datetime.timedelta(days=habit_2.habit_period * 25),
             False
         ],  
@@ -390,7 +381,7 @@ if __name__ == "__main__":
         ],        
         [
             habit_3.habit_name,
-            datetime.datetime(2023, 10, 25, rint(0, 23), rint(0, 59), rint(0, 59)),
+            datetime.datetime(2023, 10, 26, rint(0, 23), rint(0, 59), rint(0, 59)),
             habit_3.habit_start_date + datetime.timedelta(days=habit_3.habit_period * 12),
             False
         ], 
