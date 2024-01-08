@@ -64,6 +64,7 @@ Installation guide line:
   
 Note: The application will start with a request in the console. If you type anything else than yes (for example: YES), then the app will not try to add the standard habits again.  
 Afterwards you can use the GUI.  
+If the standard habits or the sample data is loaded, then 5 habits are created. One of them is not tracked. To see all adjust the filter.  
 ### Run function testing
 1. Open your console
 2. Navigate to the directory where you placed the files.
@@ -75,7 +76,7 @@ Afterwards you can use the GUI.
   
 Note: This will delete the all entries from the database and add the specified sample data.  
 The next due date in the sample data is set to 2099/12/01. The reson is that the data stays stable during the evaluation.  
-To work with the application, it is recommended to delete the data using the app and create own habits, or use the standard habits.  
+To work with the application, it is recommended to delete the data using the app and create own habits, or use the standard habits. For deleting the data make sure that the filter shows the not-tracked items as well.    
 ## Problems to run the application
 * Check the version of Python - try to use 3.11
 * Check the version of SQLAlchemy - try to use version 2.0.23
