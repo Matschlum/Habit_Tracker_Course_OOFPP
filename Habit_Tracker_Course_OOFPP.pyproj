@@ -31,7 +31,6 @@
     <Compile Include="db_standard_entries.py" />
     <Compile Include="function_testing.py" />
     <Compile Include="habit_classes.py" />
-    <Compile Include="Habit_Tracker_Course_OOFPP.py" />
     <Compile Include="main.py" />
     <Compile Include="main_window.py" />
     <Compile Include="habit_history_window.py" />

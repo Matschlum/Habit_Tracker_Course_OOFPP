@@ -57,7 +57,7 @@ class ShowHighscoreWindow:
 
         self.highscore_root = tk.Tk()
         self.highscore_root.geometry("400x400")
-        self.highscore_root.title("Highscore Streak - Habit Tracker")
+        self.highscore_root.title("High Score Streak - Habit Tracker")
         self.highscore_root.grid_columnconfigure(0, weight=1)
 
         self.highscore_frame = tk.Frame(self.highscore_root)

@@ -142,7 +142,7 @@ class MainWindow:
         )
         self.show_highscore_button = tk.Button(
             self.subframe_top_buttons,
-            text="Show Highscore Streak",
+            text="Show High Score Streak",
             command=self.click_show_highscore,
         )
         self.close_application_button = tk.Button(
